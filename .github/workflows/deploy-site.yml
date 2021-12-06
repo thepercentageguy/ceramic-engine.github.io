@@ -16,10 +16,6 @@ jobs:
         run: git submodule update --init --recursive
       - name: Fetch ceramic-samples
         run: git clone --recursive https://github.com/ceramic-engine/ceramic-samples
-      - name: list files (debug)
-        working-directory: .
-        run: |
-          echo $(ls -a)
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
@@ -36,6 +32,10 @@ jobs:
         working-directory: .
         run: |
           touch _site/.nojekyll
+      - name: Add CNAME
+        working-directory: .
+        run: |
+          echo 'ceramic-engine.com' > _site/CNAME
       - name: Deploy to Github Pages
         uses: ceramic-engine/actions-gh-pages@v1.1.0
         env:
