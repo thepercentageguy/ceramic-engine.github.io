@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title><%= title %> - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+    </head>
+    <body id="page-<%= category %>" class="page<%- category != 'home' ? ' page-standard' : '' %> no-overflow">
+        <aside id="site-navigation">
+            <ul>
+                <li<%- category == 'home' ? ' class="selected"' : '' %>><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li<%- category == 'guides' ? ' class="selected"' : '' %>><a href="/guides">Guides</a></li>
+                <li<%- category == 'examples' ? ' class="selected"' : '' %>><a href="/examples">Examples</a></li>
+                <li><a href="https://ceramic-engine.com/api">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">Github</a></li>
+            </ul>
+        </aside>
+        <%- content %>
+    </body>
+</html>
