@@ -24,11 +24,7 @@ jobs:
       - name: Run Eleventy
         working-directory: .
         run: |
-          npx @11ty/eleventy
-      - name: Remove .gitignore files
-        working-directory: _site
-        run: |
-          find . -name '.gitignore' -delete
+          ./build.sh
       - name: Add .nojekyll
         working-directory: .
         run: |
