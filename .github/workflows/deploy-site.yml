@@ -25,6 +25,10 @@ jobs:
         working-directory: .
         run: |
           npx @11ty/eleventy
+      - name: Remove .gitignore files
+        working-directory: _site
+        run: |
+          find . -name '.gitignore' -delete
       - name: Add .nojekyll
         working-directory: .
         run: |
