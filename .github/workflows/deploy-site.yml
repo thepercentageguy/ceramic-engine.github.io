@@ -9,10 +9,13 @@ jobs:
   deploy-site:
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout Ceramic Samples
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           name: ceramic-engine/ceramic-samples
+      - name: list files (debug)
+        working-directory: .
+        run: |
+          echo $(ls -a)
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
