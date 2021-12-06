@@ -1,10 +1,10 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-# Run eleventy
-npx @11ty/eleventy
-
-# Remove gitignore files in _site
-cd _site
+# Remove gitignore files in content
+cd content
 find . -name '.gitignore' -exec rm {} +
 cd ..
+
+# Run eleventy
+npx @11ty/eleventy
