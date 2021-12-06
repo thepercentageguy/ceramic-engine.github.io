@@ -1,29 +1,36 @@
 name: Deploy site
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
 
   deploy-site:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Ceramic Samples
+        uses: actions/checkout@v2
         with:
-          submodules: true
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-      - uses: actions/setup-node@v1
+          name: ceramic-engine/ceramic-samples
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: '10.16.3'
       - name: NPM Install
         working-directory: .
         run: |
           npm install
-      - name: Run eleventy
+      - name: Run Eleventy
         working-directory: .
         run: |
           npx @11ty/eleventy
+      - name: Add .nojekyll
+        working-directory: .
+        run: |
+          touch _site/.nojekyll
       - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v1.1.0
+        uses: ceramic-engine/actions-gh-pages@v1.1.0
         env:
           PUBLISH_DIR: _site
           PUBLISH_BRANCH: gh-pages
