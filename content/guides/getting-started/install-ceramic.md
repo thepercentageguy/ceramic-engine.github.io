@@ -19,7 +19,7 @@ If you ended up here and don’t know what is Ceramic engine, you might want to 
 
 <p>
 <img src="/static/img/download-haxe.png" alt="Haxe download page" />
-<small>Haxe download page</small>
+<div class="caption">Haxe download page</div>
 </p>
 
 Simply download and run the Haxe installer and follow the instructions.

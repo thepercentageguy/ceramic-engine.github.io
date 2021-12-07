@@ -56,16 +56,37 @@ allGuides.sort(function(a, b) {
             <% if (page.url != '/guides/') { %>
                 <%
                 var matchedCurrent = false;
+                var matchedNext = false;
                 for (item of allGuides) {
                     if (matchedCurrent && item.data.menu == menu) {
+                        matchedNext = true;
                         %>
-                        <h3>Next guide (<%= menu %>)</h3>
-                        <p>&#10132; <a href="<%= item.url %>"><%= item.data.title %></a></p>
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="<%= item.url %>"><%= item.data.title %></a>
+                        </p>
                         <%
                         break;
                     }
                     else if (item.url == page.url) {
                         matchedCurrent = true;
+                    }
+                }
+                if (!matchedNext) {
+                    matchedCurrent = false;
+                    for (item of allGuides) {
+                        if (matchedCurrent) {
+                            %>
+                            <hr />
+                            <p>
+                                Continue reading &#10132; <a href="<%= item.url %>"><%= item.data.title %></a> (<%= item.data.menu %>)
+                            </p>
+                            <%
+                            break;
+                        }
+                        else if (item.url == page.url) {
+                            matchedCurrent = true;
+                        }
                     }
                 }
                 %>
