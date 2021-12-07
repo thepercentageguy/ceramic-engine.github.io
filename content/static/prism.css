@@ -30,6 +30,11 @@ pre[class*="language-"] {
 
 }
 
+code.language-bash,
+pre.language-bash {
+	color: #D8D8D8;
+}
+
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1em;

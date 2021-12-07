@@ -174,24 +174,15 @@ html body a {
 }
 
 .page-standard .page-container {
-    height: 100%;
-}
-
-.page-standard.no-overflow .page-container {
     height: auto;
+    min-height: 100%;
+    background-color: #292929;
 }
 
 .page-standard .page-container .sidebar-left {
-    width: 33%;
-    height: calc(100% - 48px);
-    margin-top: 48px;
-    background-color: #292929;
-    overflow-y: auto;
-}
-
-.page-standard.no-overflow .sidebar-left {
-    overflow-y: visible;
+    width: calc(50% - 678px / 2);
     height: auto;
+    margin-top: 48px;
 }
 
 .page-standard .page-container .sidebar-left .sidebar {
@@ -199,6 +190,9 @@ html body a {
     margin-bottom: 6px;
     margin-left: auto;
     padding-right: 30px;
+    position: fixed;
+    right: calc(50% + 678px / 2);
+    top: 48px;
 }
 
 .page-standard .page-container .sidebar-left .sidebar > ul {
@@ -245,30 +239,81 @@ html body a {
 }
 
 .page-standard .page-container .content-right {
-    width: 67%;
-    height: calc(100% - 48px);
-    background-color: #1F1F1F;
+    width: calc(50% + 678px / 2);
+    height: auto;
     color: white;
-    border-left: 1px solid #333;
     margin-left: -1px;
     margin-top: 48px;
-    overflow-y: auto;
-}
-
-.page-standard.no-overflow .page-container .content-right {
-    overflow-y: visible;
-    height: auto;
 }
 
 .page-standard .page-container .content-right main {
-    margin-top: 24px;
-    margin-bottom: 32px;
-    width: 600px;
-    padding: 0 34px;
+    width: 610px;
+    border: 1px solid #303030;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 34px;
+    padding-right: 34px;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    line-height: 25px;
+    font-size: 16px;
+    color: #ccc;
+    background-color: #1F1F1F;
+}
+
+.page-standard .page-container .content-right main * {
+    max-width: 610px;
+}
+
+.page-standard .page-container .content-right main a {
+    color: #60AFEF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.page-standard .page-container .content-right main a:hover {
+    text-decoration: underline;
 }
 
 .page-standard .page-container {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+}
+
+@media (min-width: 940px) and (max-width: 1370px) {
+
+    .page-standard .page-container .sidebar-left {
+        width: calc(25%);
+    }
+
+    .page-standard .page-container .sidebar-left .sidebar {
+        right: calc(75%);
+    }
+
+    .page-standard .page-container .content-right {
+        width: calc(75%);
+    }
+
+}
+
+@media (max-width: 940px) {
+
+    html, body {
+        min-width: 940px;
+    }
+
+    .page-standard .page-container .sidebar-left {
+        width: calc(25%);
+    }
+
+    .page-standard .page-container .sidebar-left .sidebar {
+        width: 100%;
+        right: calc(100% - 236px);
+    }
+
+    .page-standard .page-container .content-right {
+        width: calc(75%);
+    }
+
 }
