@@ -222,7 +222,7 @@ html body a {
 }
 
 .page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li > a {
-    color: white;
+    color: #eee;
     text-decoration: none;
 }
 
@@ -257,11 +257,11 @@ html body a {
     padding-bottom: 32px;
     line-height: 25px;
     font-size: 16px;
-    color: #ccc;
+    color: #eee;
     background-color: #1F1F1F;
 }
 
-.page-standard .page-container .content-right main * {
+.page-standard .page-container .content-right * {
     max-width: 610px;
 }
 
@@ -279,7 +279,7 @@ html body a {
     border-left: none;
     border-right: none;
     border-top: none;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #333;
     margin-top: 30px;
     margin-bottom: 26px;
 }
@@ -292,6 +292,47 @@ html body a {
 
 .page-standard .page-container .content-right main .regular {
     font-weight: normal;
+}
+
+.page-standard .page-container .content-right main .codename {
+    color: #ff9900;
+    background-color: #383C43;
+    margin-bottom: -8px;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 1px 16px 2px 16px;
+}
+
+.page-standard .page-container .content-right main :not(pre.language-haxe) code {
+    color: #60AFEF;
+    font-weight: normal;
+}
+
+.page-standard .page-container .content-right main .code-purple {
+    color: #9b51e0 !important;
+}
+
+.page-standard .page-container .content-right main .code-red {
+    color: #cf2e2e !important;
+}
+
+.page-standard .page-container .content-right main .code-yellow {
+    color: #fcb900 !important;
+}
+
+.page-standard .page-container .content-right main .code-blue {
+    color: #8ed1fc !important;
+}
+
+.page-standard .page-container .content-right main .code-green {
+    color: #00d084 !important;
+}
+
+.page-standard .page-container .content-right main table,
+.page-standard .page-container .content-right main table td {
+    border: 1px solid #444;
+    border-collapse: collapse;
+    padding: 6px 8px;
 }
 
 .page-standard .page-container .content-right main a:hover {

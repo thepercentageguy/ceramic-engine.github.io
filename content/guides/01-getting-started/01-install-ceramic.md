@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Install Ceramic
-order: 1
+permalink: guides/getting-started/install-ceramic/
 ---
 # Install Ceramic
 

@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Your first Ceramic project
-order: 2
+permalink: guides/getting-started/your-first-project/
 ---
 # Your first Ceramic project
 
