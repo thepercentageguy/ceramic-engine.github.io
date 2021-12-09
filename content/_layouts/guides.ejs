@@ -13,9 +13,9 @@ allGuides.sort(function(a, b) {
 });
 var guideMenus = [];
 for (item of allGuides) {
-    var menu = item.data.menu;
-    if (menu && guideMenus.indexOf(menu) == -1) {
-        guideMenus.push(menu);
+    var aMenu = item.data.menu;
+    if (aMenu && guideMenus.indexOf(aMenu) == -1) {
+        guideMenus.push(aMenu);
     }
 }
 %>
@@ -24,13 +24,14 @@ for (item of allGuides) {
         <% if (page.url != '/guides/') { %>
         <aside class="sidebar">
             <ul>
-            <% for (menu of guideMenus) { %>
-                <li><%= menu %></li>
+            <% for (aMenu of guideMenus) { %>
+                <li><%= aMenu %></li>
                 <li>
                     <ul>
                         <%
                         for (item of allGuides) {
-                            if (item.data.category == 'guides' && item.url != '/guides/' && item.data.menu == menu) {
+                            console.log(item.data.title + ' / item.data.menu('+item.data.menu+') menu('+aMenu+')');
+                            if (item.data.category == 'guides' && item.url != '/guides/' && item.data.menu == aMenu) {
                         %>
                             <li<%- item.url == page.url ? ' class="selected"' : '' %>>
                                 <a href="<%= item.url %>"><%= item.data.title %></a>

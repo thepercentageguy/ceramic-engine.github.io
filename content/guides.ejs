@@ -15,21 +15,21 @@ allGuides.sort(function(a, b) {
 });
 var guideMenus = [];
 for (item of allGuides) {
-    var menu = item.data.menu;
-    if (menu && guideMenus.indexOf(menu) == -1) {
-        guideMenus.push(menu);
+    var aMenu = item.data.menu;
+    if (aMenu && guideMenus.indexOf(aMenu) == -1) {
+        guideMenus.push(aMenu);
     }
 }
 %>
 <h1>Guides</h1>
 <p>This section gathers guides to help you learn <strong>Ceramic</strong> and get up and running. If you are new to <strong>Ceramic</strong>, you should start with the <strong>Getting started</strong> section.</p>
 
-<% for (menu of guideMenus) { %>
-<h2><%= menu %></h2>
+<% for (aMenu of guideMenus) { %>
+<h2><%= aMenu %></h2>
 <ul>
     <%
     for (item of allGuides) {
-        if (item.data.category == 'guides' && item.url != '/guides/' && item.data.menu == menu) {
+        if (item.data.category == 'guides' && item.url != '/guides/' && item.data.menu == aMenu) {
     %>
         <li>
             <a href="<%= item.url %>"><%= item.data.title %></a>

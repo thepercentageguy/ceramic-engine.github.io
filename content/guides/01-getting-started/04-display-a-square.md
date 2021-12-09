@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Display a square
-permalink: guides/getting-started/display-a-square/
+permalink: guides/display-a-square/
 ---
 # Display a square
 

@@ -269,10 +269,19 @@ html body a {
     width: 100%;
 }
 
+.page-standard .page-container .content-right main > p.extra-info {
+    padding: 12px 16px;
+    background-color: #292929;
+}
+
 .page-standard .page-container .content-right main a {
     color: #60AFEF;
     font-weight: bold;
     text-decoration: none;
+}
+
+.page-standard .page-container .content-right main table {
+    margin-bottom: 16px;
 }
 
 .page-standard .page-container .content-right main hr {
