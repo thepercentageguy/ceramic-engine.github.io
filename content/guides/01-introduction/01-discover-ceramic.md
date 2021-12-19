@@ -152,7 +152,7 @@ Ceramic doesn’t provide any 3D pipeline like Heaps or Kha, it is focused on 2D
 
 Creating Ceramic was a way for me to experiment new things. Not only for creating games, but also create some generative art / creative coding projects (see [this installation](https://jeremyfa.com/protocole-du-vivant/) or [most of my animations posted on instagram](https://instagram.com/jeremyfa), which are all made with ceramic).
 
-<video autoplay loop muted src="/static/img/breaking-the-line2.mp4"></video>
+<video autoplay loop muted playsinline src="/static/img/breaking-the-line2.mp4"></video>
 <div class="caption">An animation made with Ceramic.</div>
 
 Ceramic has been used by [La Gamerie](https://lagamerie.studio/) to release a few games with it on iOS and Android (see [Make More Views](https://apps.apple.com/fr/app/make-more-views/id1438348967), which contains advanced UI, a lot of animations using [Spine](http://esotericsoftware.com/), fully customizable studio and avatar etc… all made with Ceramic).
