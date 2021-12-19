@@ -3,9 +3,9 @@ layout: guides
 category: guides
 menu: Appendices
 title: Inside a default project
-permalink: guides/inside-a-default-project/
+permalink: guides/appendices/inside-a-default-project/
 ---
-# What's inside a project?
+# What's inside a default project?
 
 ![Ceramic project VSCode](/static/img/ceramic-project-vscode.png)
 

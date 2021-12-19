@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Display a square
-permalink: guides/display-a-square/
+permalink: guides/getting-started/display-a-square/
 ---
 # Display a square
 
@@ -82,6 +82,8 @@ This is the equivalent of writing:
         quad.height = 100;
 ```
 
+<p class="extra-info">You could also turn the square into a rectangle by changing the <code>width</code> or <code>height</code> values.</p>
+
 <br />
 
 <p><strong>4. Set the color of the quad as <span style="color:#ffdd00">yellow</span></strong></p>
@@ -126,4 +128,35 @@ Let’s add some interactivity, so that it will be… an _interactive yellow squ
 
 ## Adding interactivity with pointer events
 
-Coming soon.
+Let’s do something simple: everytime we click on the square, it changes color! This can be done using **pointer events** in ceramic.
+
+Add this code at the end of the `create()` method:
+
+<div class="codename">GettingStarted.hx <span class="regular default-color">(end of <code>create()</code> method)</span></div>
+
+```haxe
+        // Bind to 'pointerDown' event
+        quad.onPointerDown(this, info -> {
+            log.debug('pointer down: $info');
+            quad.color = Color.random();
+        });
+```
+
+Build and run again, you should now see your square change color everytime you click on it.
+
+<iframe src="/static/apps/yellow-square-click" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<div class="caption">Try clicking on the square 🟨</div>
+
+Not that hard so far right? There are still a few things to explain.
+
+With this snippet of code, we are listening to the `pointerDown` event of our `quad`. When this event is fired (that is, when we click on the quad), the callback we have provided is called.
+
+You can see we are also providing a first argument (this). That argument is the _**owner**_ of the event binding. In our code, `this` is the scene instance. We are stating that the GettingStarted `scene` instance is the owner of this event binding.
+
+In practice, it means that if our scene is _**destroyed**_, the event binding will be automatically removed as well. You don’t need to remove it manually, ceramic will take care of that. If we `destroy()` the quad instance, the event binding will also be removed as the quad was the object we were listening to.
+
+Although in this example it doesn’t really matter, specifying ownership of event bindings becomes important on larger and more complex projects to ensure you won’t have anything leaking or being called accidentally on destroyed objects.
+
+<p class="extra-info">This whole concept of ownership and events will be treated in details in a separate guide. For now, just remember that you should use <code>this</code> as first argument of your event binding and you’ll be fine!</p>
+
+In the next guide, we'll learn how to use quads to display actual images!
