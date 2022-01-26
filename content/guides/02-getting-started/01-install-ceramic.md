@@ -46,6 +46,8 @@ Follow the instructions, it will tell you where it wants to install Ceramic and 
 
 <p class="extra-info">When it asks you if you want to make <code>ceramic</code> command available globally, you should choose <code>yes</code> so that the <code>ceramic</code> command will work by default on any command line session from any folder on your computer.</p>
 
+<p class="extra-info">On Mac and Linux, depending on the permissions settings of your machine, you might need to run the setup with administrator rights: <code>sudo haxelib run ceramic setup</code>.</p>
+
 After the command has finished installing, you can check that Ceramic is working by typing:
 
 ```bash
