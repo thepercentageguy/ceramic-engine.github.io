@@ -14,8 +14,6 @@ jobs:
           submodules: true
       - name: Checkout submodules
         run: git submodule update --init --recursive
-      - name: Fetch ceramic-samples
-        run: git clone --recursive https://github.com/ceramic-engine/ceramic-samples
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
