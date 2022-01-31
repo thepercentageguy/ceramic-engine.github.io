@@ -31,13 +31,13 @@ Now that `git` and `node` are available, open a **Terminal** (or **Powershell** 
 git clone https://github.com/ceramic-engine/ceramic.git
 cd ceramic
 git submodule update --init --recursive
-cd tools
-npm install
-./npm install
-./npm audit fix
+cd node
+npm ci
+cd ../tools
+./npm ci
 ./ceramic link
 cd ../runner
-../tools/npm install
+../tools/npm ci
 cd ..
 ceramic
 ```
@@ -60,10 +60,9 @@ When you install Ceramic via Git, you need to update it via Git as well. To do s
 git pull
 git submodule update --init --recursive
 cd tools
-./npm install
-./npm audit fix
+./npm ci
 cd ../runner
-../tools/npm install
+../tools/npm ci
 cd ..
 ceramic
 ```
