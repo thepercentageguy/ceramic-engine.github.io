@@ -23,7 +23,7 @@ If not already available on your machine, [install Git from git-scm.com](https:/
 
 ## Do the actual installation via Git
 
-Now that `git` and `node` are available, open a **Terminal** (or **Powershell** on Windows), move to the directory where you want to install Ceramic, and paste this script:
+Now that `git` and `node` are available, open a **Terminal** (or **Powershell** on Windows), move to the directory where you want to install Ceramic, and run this script:
 
 <div class="codename">Installation script</div>
 
