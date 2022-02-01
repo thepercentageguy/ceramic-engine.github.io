@@ -35,6 +35,7 @@ cd node
 npm ci
 cd ../tools
 ./npm ci
+./node post-install.js
 ./ceramic link
 cd ../runner
 ../tools/npm ci
@@ -61,6 +62,7 @@ git pull
 git submodule update --init --recursive
 cd tools
 ./npm ci
+./node post-install.js
 cd ../runner
 ../tools/npm ci
 cd ..
