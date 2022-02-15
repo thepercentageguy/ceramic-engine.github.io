@@ -136,6 +136,7 @@ html body a {
 #page-home > main > section#cross-platform-haxe {
     padding-bottom: 0;
     background-color: white;
+    color: #161616;
 }
 
 #page-home > main > section#cross-platform-haxe #diagram-ceramic {
