@@ -41,7 +41,7 @@ You should then be able to build a native Windows app when you select `Build/Run
 <p class="extra-info">Building for Android can be done from Mac, Linux and Windows<p>
 
 * Install [Android Studio](https://developer.android.com/studio)
-* Install [Android NDK r15c](https://developer.android.com/ndk/downloads/older_releases.html) or [latest NDK LTS](https://developer.android.com/ndk/downloads#lts-downloads)
+* Install [Android NDK r15c](https://developer.android.com/ndk/downloads/older_releases.html) or more recent [NDK r21e](https://github.com/android/ndk/wiki/Unsupported-Downloads#r21e).
 
 HXCPP needs to know where your Android SDK and Android NDK are installed. To solve that, you need to add some info inside your `.hxcpp-config.xml` (that should be located inside your home directory. If not, you can create it).
 
