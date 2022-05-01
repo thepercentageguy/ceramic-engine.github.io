@@ -70,10 +70,16 @@ sudo spctl --master-disable
 
 <p class="extra-info">Building for Linux can only be done from Linux<p>
 
+Install `g++` if not installed already:
+
+```bash
+sudo apt-get install g++
+```
+
 Install required dependencies:
 
 ```bash
-sudo apt-get install libasound2-dev libx11-dev libxext-dev libxi-dev libxrandr-dev libxinerama-dev
+sudo apt-get install libasound2-dev libx11-dev libxext-dev libxi-dev libxrandr-dev libxinerama-dev libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
 ```
 
 You should then be able to build a native Linux app when you select `Build/Run Linux` from _Visual Studio Code_.
