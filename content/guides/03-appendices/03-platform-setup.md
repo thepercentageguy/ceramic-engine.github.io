@@ -76,6 +76,16 @@ Install `g++` if not installed already:
 sudo apt-get install g++
 ```
 
+Install SDL (on linux, ceramic app is linking to the SDL installed on your machine).
+
+```bash
+sudo apt-get install libsdl2-dev
+```
+
+<p class="extra-info">
+Your SDL version should be equal or above <code>2.0.22</code>. On Ubuntu, you might need to add an additional repository like <code>ppa:savoury1/multimedia</code> as <a href="https://github.com/TerryCavanagh/VVVVVV/issues/618#issuecomment-968338212">explained here</a>, in order to get latest SDL version.
+</p>
+
 Install required dependencies:
 
 ```bash
