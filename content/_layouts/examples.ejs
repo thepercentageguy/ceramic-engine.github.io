@@ -1,12 +1,101 @@
 ---
 layout: page
 ---
+<%
+var allExamples = [];
+for (item of collections.all) {
+    if (item.data.category == 'examples' && item.url != '/examples/') {
+        allExamples.push(item);
+    }
+}
+allExamples.sort(function(a, b) {
+    return a.filePathStem.localeCompare(b.filePathStem);
+});
+var exampleMenus = [];
+for (item of allExamples) {
+    var aMenu = item.data.menu;
+    if (aMenu && exampleMenus.indexOf(aMenu) == -1) {
+        exampleMenus.push(aMenu);
+    }
+}
+%>
 <div class="page-container">
     <div class="sidebar-left">
+        <% if (page.url != '/examples/') { %>
+        <aside class="sidebar">
+            <ul>
+            <% for (aMenu of exampleMenus) { %>
+                <li><%= aMenu %></li>
+                <li>
+                    <ul>
+                        <%
+                        for (item of allExamples) {
+                            console.log(item.data.title + ' / item.data.menu('+item.data.menu+') menu('+aMenu+')');
+                            if (item.data.category == 'examples' && item.url != '/examples/' && item.data.menu == aMenu) {
+                        %>
+                            <li<%- item.url == page.url ? ' class="selected"' : '' %>>
+                                <a href="<%= item.url %>"><%= item.data.title %></a>
+                            </li>
+                        <%
+                            }
+                        }
+                        %>
+                    </ul>
+                </li>
+            <% } %>
+            </ul>
+        </aside>
+        <% } %>
     </div>
     <div class="content-right">
         <main>
             <%- content %>
+            <% if (page.url != '/examples/') { %>
+                <h1><%= title %></h1>
+                <iframe src="https://ceramic-engine.com/ceramic-samples/<%= sample %>/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+
+                <p>
+                <a href="https://ceramic-engine.com/ceramic-samples/<%= sample %>/">Open on a full page</a>
+                —
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/<%= sample %>">View source on GitHub</a>
+                </p>
+                <%
+                var matchedCurrent = false;
+                var matchedNext = false;
+                for (item of allExamples) {
+                    if (matchedCurrent && item.data.menu == menu) {
+                        matchedNext = true;
+                        %>
+                        <hr />
+                        <p>
+                            Next example &#10132; <a href="<%= item.url %>"><%= item.data.title %></a>
+                        </p>
+                        <%
+                        break;
+                    }
+                    else if (item.url == page.url) {
+                        matchedCurrent = true;
+                    }
+                }
+                if (!matchedNext) {
+                    matchedCurrent = false;
+                    for (item of allExamples) {
+                        if (matchedCurrent) {
+                            %>
+                            <hr />
+                            <p>
+                                Next example &#10132; <a href="<%= item.url %>"><%= item.data.title %></a> (<%= item.data.menu %>)
+                            </p>
+                            <%
+                            break;
+                        }
+                        else if (item.url == page.url) {
+                            matchedCurrent = true;
+                        }
+                    }
+                }
+                %>
+            <% } %>
         </main>
     </div>
 </div>

@@ -405,6 +405,48 @@ html body a {
     align-items: stretch;
 }
 
+.page-standard .page-container .content-right main ul.thumbnail-list {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li {
+    display: block;
+    float: left;
+    margin: 2px 4px 0 0;
+    width: 196px;
+    text-align: center;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li a:hover {
+    text-decoration: none;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li .thumbnail-image {
+    display: block;
+    margin: 0;
+    padding: 1px;
+    max-width: 196px;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li .thumbnail-image img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    max-width: 194px;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li:hover .thumbnail-image {
+    background-color: #60AFEF;
+}
+
 @media (min-width: 940px) and (max-width: 1370px) {
 
     .page-standard .page-container .sidebar-left {

@@ -1,0 +1,47 @@
+---
+layout: examples
+category: examples
+title: Examples
+---
+<%
+var allExamples = [];
+for (item of collections.all) {
+    if (item.data.category == 'examples' && item.url != '/examples/') {
+        allExamples.push(item);
+    }
+}
+allExamples.sort(function(a, b) {
+    return a.filePathStem.localeCompare(b.filePathStem);
+});
+var exampleMenus = [];
+for (item of allExamples) {
+    var aMenu = item.data.menu;
+    if (aMenu && exampleMenus.indexOf(aMenu) == -1) {
+        exampleMenus.push(aMenu);
+    }
+}
+%>
+<h1>Examples</h1>
+<p>Learn by example! Check out the following samples. They can be tested directly on the browser, and you can find their source code to see how it's done.</p>
+
+<% for (aMenu of exampleMenus) { %>
+    <h2><%= aMenu %></h2>
+    <ul class="thumbnail-list">
+        <%
+        for (item of allExamples) {
+            if (item.data.category == 'examples' && item.url != '/examples/' && item.data.menu == aMenu) {
+        %>
+            <li>
+                <a href="<%= item.url %>">
+                    <div class="thumbnail-title"><%= item.data.title %></div>
+                    <div class="thumbnail-image">
+                        <img src="https://ceramic-engine.com/ceramic-samples/<%= item.data.sample %>/thumbnail.png" alt="<%= item.data.title + ' thumbnail' %>" />
+                    </div>
+                </a>
+            </li>
+        <%
+            }
+        }
+        %>
+    </ul>
+<% } %>
