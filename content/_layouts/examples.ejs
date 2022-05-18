@@ -57,7 +57,7 @@ for (item of allExamples) {
                 <p>
                 <a href="https://ceramic-engine.com/ceramic-samples/<%= sample %>/">Open on a full page</a>
                 —
-                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/<%= sample %>">View source on GitHub</a>
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/<%= sample %><%= source ? source : '' %>">View source on GitHub</a>
                 </p>
                 <%
                 var matchedCurrent = false;

@@ -5,4 +5,5 @@ menu: Basics
 title: Dragging a quad
 permalink: examples/basics/quad-drag/
 sample: quad-drag
+source: /src/QuadDrag.hx
 ---

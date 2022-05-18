@@ -5,4 +5,5 @@ menu: Basics
 title: Hello World
 permalink: examples/basics/hello-world/
 sample: hello-world
+source: /src/Project.hx
 ---

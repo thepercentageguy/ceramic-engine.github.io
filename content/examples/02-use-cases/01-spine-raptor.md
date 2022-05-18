@@ -5,4 +5,5 @@ menu: Use cases
 title: Spine animations
 permalink: examples/basics/spine-raptor/
 sample: spine-raptor
+source: /src/SpineRaptor.hx
 ---
