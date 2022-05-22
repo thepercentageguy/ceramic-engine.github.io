@@ -24,6 +24,33 @@ document.addEventListener("DOMContentLoaded", function(e) {
         layout();
     });
 
+    var menus = document.querySelectorAll('.page-standard .page-container .sidebar-left li.menu-title');
+    bindMenus(menus);
+
+    function bindMenus(menus) {
+
+        for (var menu of menus) {
+            if (menu.classList.contains('menu-title')) {
+                menu.addEventListener('click', function(e) {
+                    for (var m of menus) {
+                        if (m == e.currentTarget) {
+                            if (m.classList.contains('selected')) {
+                                m.classList.remove('selected');
+                                console.log(m.nextSibling);
+                                m.nextElementSibling.classList.remove('expanded');
+                            }
+                            else {
+                                m.classList.add('selected');
+                                console.log(m.nextSibling);
+                                m.nextElementSibling.classList.add('expanded');
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+
     /*
     window.addEventListener('scroll', function(e) {
         console.log('scroll: '+window.pageYOffset);

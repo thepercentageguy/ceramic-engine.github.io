@@ -5,5 +5,16 @@ menu: Basics
 title: Drawing lines
 permalink: examples/basics/lines/
 sample: lines
-source: /src/Lines.hx
 ---
+
+Creating lines with `ceramic.Line`.
+
+```haxe
+var line = new Line();
+line.color = Color.WHITE;
+line.thickness = 4;
+line.points = [
+    300, 50,
+    600, 200
+];
+```

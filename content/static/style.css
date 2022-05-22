@@ -213,14 +213,62 @@ html body a {
     padding-bottom: 6px;
     color: #999;
     font-size: 17px;
+    position: relative;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title {
+    user-select: none;
+    cursor: pointer;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title:not(.selected)::before {
+    content: '◼︎';
+    color: #999;
+    position: absolute;
+    font-weight: normal;
+    font-size: 9px;
+    right: -19px;
+    top: 6px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title:hover::before {
+    content: '▶︎';
+    color: #999;
+    position: absolute;
+    font-weight: normal;
+    font-size: 9px;
+    right: -19px;
+    top: 6px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title.selected::before {
+    content: '▶︎';
+    color: #999;
+    position: absolute;
+    font-weight: normal;
+    font-size: 9px;
+    right: -18px;
+    top: 5px;
+    user-select: none;
+    cursor: pointer;
+    transform: rotate(90deg);
 }
 
 .page-standard .page-container .sidebar-left .sidebar > ul > li > ul {
+    display: none;
     list-style: none;
     text-align: right;
     padding: 0 0 12px 0;
     font-weight: normal;
     font-size: 16px;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.expanded > ul {
+    display: block;
 }
 
 .page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li {
@@ -342,6 +390,17 @@ html body a {
     padding: 0;
 }
 
+.page-standard .page-container .content-right main .caption a {
+    font-weight: normal;
+}
+
+.page-standard .page-container .content-right main .rectangle {
+    background-color: #161616;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-top: -22px;
+}
+
 .page-standard .page-container .content-right main .regular {
     font-weight: normal;
 }
@@ -433,18 +492,20 @@ html body a {
     display: block;
     margin: 0;
     padding: 1px;
-    max-width: 196px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li:hover .thumbnail-image {
+    background-color: #60AFEF;
 }
 
 .page-standard .page-container .content-right main ul.thumbnail-list li .thumbnail-image img {
     display: block;
     margin: 0;
     padding: 0;
-    max-width: 194px;
-}
-
-.page-standard .page-container .content-right main ul.thumbnail-list li:hover .thumbnail-image {
-    background-color: #60AFEF;
+    width: 194px;
+    height: 145.50px;
 }
 
 @media (min-width: 940px) and (max-width: 1370px) {

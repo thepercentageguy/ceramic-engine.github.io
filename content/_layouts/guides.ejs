@@ -25,8 +25,17 @@ for (item of allGuides) {
         <aside class="sidebar">
             <ul>
             <% for (aMenu of guideMenus) { %>
-                <li><%= aMenu %></li>
-                <li>
+                <%
+                var isActiveMenu = false;
+                for (item of allGuides) {
+                    if (item.url == page.url && item.data.category == 'guides' && item.url != '/guides/' && item.data.menu == aMenu) {
+                        isActiveMenu = true;
+                        break;
+                    }
+                }
+                %>
+                <li class="menu-title<%= isActiveMenu ? ' selected' : '' %>"><%= aMenu %></li>
+                <li class="<%= isActiveMenu ? 'expanded' : '' %>">
                     <ul>
                         <%
                         for (item of allGuides) {

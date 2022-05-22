@@ -25,8 +25,17 @@ for (item of allExamples) {
         <aside class="sidebar">
             <ul>
             <% for (aMenu of exampleMenus) { %>
-                <li><%= aMenu %></li>
-                <li>
+                <%
+                var isActiveMenu = false;
+                for (item of allExamples) {
+                    if (item.url == page.url && item.data.category == 'examples' && item.url != '/examples/' && item.data.menu == aMenu) {
+                        isActiveMenu = true;
+                        break;
+                    }
+                }
+                %>
+                <li class="menu-title<%= isActiveMenu ? ' selected' : '' %>"><%= aMenu %></li>
+                <li class="<%= isActiveMenu ? 'expanded' : '' %>">
                     <ul>
                         <%
                         for (item of allExamples) {
@@ -49,16 +58,18 @@ for (item of allExamples) {
     </div>
     <div class="content-right">
         <main>
-            <%- content %>
             <% if (page.url != '/examples/') { %>
                 <h1><%= title %></h1>
                 <iframe src="https://ceramic-engine.com/ceramic-samples/<%= sample %>/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
-
-                <p>
-                <a href="https://ceramic-engine.com/ceramic-samples/<%= sample %>/">Open on a full page</a>
+                <div class="caption rectangle">
+                <a href="https://ceramic-engine.com/ceramic-samples/<%= sample %>/">Run in full page</a>
                 —
-                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/<%= sample %><%= source ? source : '' %>">View source on GitHub</a>
-                </p>
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/<%= sample %>">Read full source code on GitHub</a>
+                </div>
+                <% if (content && content.trim().length > 0) { %>
+                <hr />
+                <%- content %>
+                <% } %>
                 <%
                 var matchedCurrent = false;
                 var matchedNext = false;
@@ -79,8 +90,10 @@ for (item of allExamples) {
                 }
                 if (!matchedNext) {
                     matchedCurrent = false;
+                    var displayedNext = false;
                     for (item of allExamples) {
                         if (matchedCurrent) {
+                            displayedNext = true;
                             %>
                             <hr />
                             <p>
@@ -93,8 +106,18 @@ for (item of allExamples) {
                             matchedCurrent = true;
                         }
                     }
+                    if (!displayedNext) {
+                        %>
+                        <hr />
+                        <p>
+                            &#10132; <a href="/examples">Back to examples list</a>
+                        </p>
+                        <%
+                    }
                 }
                 %>
+            <% } else { %>
+                <%- content %>
             <% } %>
         </main>
     </div>
