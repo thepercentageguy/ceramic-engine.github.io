@@ -9,6 +9,10 @@ sample: keyboard-input
 
 Using `keyDown` and `keyUp` events from `input` to listen to keyboard input.
 
+<p class="extra-info"><strong>Key codes</strong> are used to know which key is pressed on the keyboard and depend on the user keyboard layout (QWERTY, AZERTY...).</p>
+
+<p class="extra-info"><strong>Scan codes</strong> represent physical keys on the keyboard. They are useful because they always follow a standard QWERTY layout and are independent from the user's keyboard layout. For example, if you want your W,A,S,D controls to work with any keyboard, you should use scan codes!</p>
+
 ```haxe
 import ceramic.Key;
 import ceramic.KeyCode;
