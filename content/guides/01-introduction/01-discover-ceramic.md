@@ -76,7 +76,7 @@ I tried these one by one before starting to work on ceramic, even did some proje
     </tr>
     <tr>
         <td><a href="https://kha.tech/">Kha</a></td>
-        <td>Kha	Kha is impressive. That said I didn’t dare to invest much in it, because I was not comfortable with using a tech I don’t understand much and that I can’t fix myself in case I face a problem with it. Also, if I used Kha, I would have needed to create some high level API anyway because Kha is a bit too much lower level for my daily usage. Some developers are doing awesome things with Kha though.</td>
+        <td>Kha is impressive. That said I didn’t dare to invest much in it, because I was not comfortable with using a tech I don’t understand much and that I can’t fix myself in case I face a problem with it. Also, if I used Kha, I would have needed to create some high level API anyway because Kha is a bit too much lower level for my daily usage. Some developers are doing awesome things with Kha though.</td>
     </tr>
     <tr>
         <td><a href="https://luxeengine.com/alpha/">Luxe</a></td>
