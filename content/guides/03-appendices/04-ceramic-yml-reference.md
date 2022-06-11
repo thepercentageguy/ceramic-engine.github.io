@@ -39,6 +39,9 @@ app:
 
         # A git repository URL can be provided as well
         - lib3: git:https://github.com/somelibauthor/lib3.git
+
+        # And also, a lib can point to a local path
+        - lib4: path:some/folder/to/lib4
 ```
 
 Specified libs can be installed by `ceramic` by running in your project directory:
