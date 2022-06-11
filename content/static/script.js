@@ -51,26 +51,75 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     }
 
-    /*
-    window.addEventListener('scroll', function(e) {
-        console.log('scroll: '+window.pageYOffset);
-        var sidebar = document.querySelector('.page-standard .page-container .sidebar-left .sidebar');
-        if (sidebar != null) {
-            sidebar.style.top = (48 + Math.max(0, window.pageYOffset)) + 'px';
+    var didLike = false;
+    bindLikeCounter();
+
+    function bindLikeCounter() {
+        var likeCounters = document.querySelectorAll('.page-standard .page-container .content-right main #like-counter');
+
+        var len = 0;
+        for (var likeCounter of likeCounters) {
+            len++;
         }
-    });
 
-    function frame(delta) {
+        if (len > 0) {
+            var uri = window.location.pathname;
+            if (!uri.startsWith('/'))
+                uri = '/' + uri;
 
-        // var sidebar = document.querySelector('.page-standard .page-container .sidebar-left .sidebar');
-        // if (sidebar != null) {
-        //     sidebar.style.top = (48 + Math.max(0, window.pageYOffset)) + 'px';
-        // }
+            var script = document.createElement("script");
+            var callback = "jsonp" + new Date().getTime();
+            var counterUrl = "https://api.ceramic-engine.com/like-counter" + uri + "?jsonp=" + callback;
+            window[callback] = function(count) {
+                document.body.removeChild(script);
+                script = null;
 
-        requestAnimationFrame(frame);
+                for (var likeCounter of likeCounters) {
+                    likeCounter.innerHTML = [
+                        '<div class="like-counter-button"><span class="like-counter-heart"></span> <span class="like-counter-count">+' + (count + 1) + '</span></div>'
+                    ].join('\n');
+
+                    likeCounter.addEventListener('click', function(e) {
+                        if (!didLike)
+                            addOneLike();
+                    });
+                }
+            };
+            script.src = counterUrl;
+            document.body.appendChild(script);
+        }
     }
 
-    frame(0);
-    */
+    function addOneLike() {
+
+        didLike = true;
+
+        var likeCounters = document.querySelectorAll('.page-standard .page-container .content-right main #like-counter');
+
+        for (var likeCounter of likeCounters) {
+            likeCounter.classList.add('like-counter-liked');
+        }
+
+        var likeCounts = document.querySelectorAll('.page-standard .page-container .content-right main #like-counter .like-counter-count');
+
+        var uri = window.location.pathname;
+        if (!uri.startsWith('/'))
+            uri = '/' + uri;
+
+        var script = document.createElement("script");
+        var callback = "jsonp" + new Date().getTime();
+        var counterUrl = "https://api.ceramic-engine.com/like-counter" + uri + "?plus-one=1&jsonp=" + callback;
+        window[callback] = function(count) {
+            document.body.removeChild(script);
+            script = null;
+
+            for (var likeCount of likeCounts) {
+                likeCount.innerHTML = '+' + (count + 1);
+            }
+        };
+        script.src = counterUrl;
+        document.body.appendChild(script);
+
+    }
 
 });

@@ -97,6 +97,17 @@ for (item of allGuides) {
                 }
                 %>
             <% } %>
+            <% if (page.url != '/guides/') { %>
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            <% } %>
         </main>
     </div>
 </div>

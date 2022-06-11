@@ -508,6 +508,64 @@ html body a {
     height: 145.50px;
 }
 
+.page-standard .page-container .content-right main #like-counter {
+    position: relative;
+    height: 20px;
+    border: 1px solid #444;
+    padding: 5px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    margin-left: 64px;
+}
+
+.page-standard .page-container .content-right main #like-counter.like-counter-liked {
+    cursor: default;
+}
+
+.page-standard .page-container .content-right main #like-counter::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.page-standard .page-container .content-right main #like-counter:hover,
+.page-standard .page-container .content-right main #like-counter.like-counter-liked {
+    border-color: #4a4a4a;
+    background-color: #161616;
+}
+
+.page-standard .page-container .content-right main #like-counter .like-counter-heart {
+    width: 20px;
+    height: 20px;
+    background: url(/static/love.svg) no-repeat;
+    display: inline-block;
+    filter: invert(44%) sepia(40%) saturate(3852%) hue-rotate(329deg) brightness(100%) contrast(111%);
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin-right: 4px;
+}
+
+.page-standard .page-container .content-right main #like-counter:hover .like-counter-heart,
+.page-standard .page-container .content-right main #like-counter.like-counter-liked .like-counter-heart {
+    filter: invert(44%) sepia(90%) saturate(3852%) hue-rotate(329deg) brightness(100%) contrast(111%);
+}
+
+.page-standard .page-container .content-right main #like-counter .like-counter-count {
+    font-weight: bold;
+    color: #999;
+    position: relative;
+    left: 0px;
+    top: -5px;
+}
+
+.page-standard .page-container .content-right main #like-counter:hover .like-counter-count,
+.page-standard .page-container .content-right main #like-counter.like-counter-liked .like-counter-count {
+    color: #bbb;
+}
+
 @media (min-width: 940px) and (max-width: 1370px) {
 
     .page-standard .page-container .sidebar-left {
