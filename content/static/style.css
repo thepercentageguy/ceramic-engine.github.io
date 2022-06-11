@@ -566,6 +566,41 @@ html body a {
     color: #bbb;
 }
 
+.page-standard .page-container .content-right main h1,
+.page-standard .page-container .content-right main h2,
+.page-standard .page-container .content-right main h3,
+.page-standard .page-container .content-right main h4,
+.page-standard .page-container .content-right main h5,
+.page-standard .page-container .content-right main h6 {
+    outline: none;
+}
+
+.page-standard .page-container .content-right main h1 .header-anchor,
+.page-standard .page-container .content-right main h2 .header-anchor,
+.page-standard .page-container .content-right main h3 .header-anchor,
+.page-standard .page-container .content-right main h4 .header-anchor,
+.page-standard .page-container .content-right main h5 .header-anchor,
+.page-standard .page-container .content-right main h6 .header-anchor {
+    display: none;
+    text-decoration: none;
+}
+
+.page-standard .page-container .content-right main h1:hover .header-anchor,
+.page-standard .page-container .content-right main h2:hover .header-anchor,
+.page-standard .page-container .content-right main h3:hover .header-anchor,
+.page-standard .page-container .content-right main h4:hover .header-anchor,
+.page-standard .page-container .content-right main h5:hover .header-anchor,
+.page-standard .page-container .content-right main h6:hover .header-anchor {
+    display: inline;
+}
+
+:target::before {
+    content: "";
+    display: block;
+    height: 70px;
+    margin: -70px 0 0;
+}
+
 @media (min-width: 940px) and (max-width: 1370px) {
 
     .page-standard .page-container .sidebar-left {
