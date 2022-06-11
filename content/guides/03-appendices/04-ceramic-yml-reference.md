@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Appendices
 title: 'Reference: ceramic.yml'
-permalink: guides/appendices/ceramic-yml-reference/
+permalink: guides/ceramic-yml-reference/
 ---
 # Reference: `ceramic.yml`
 

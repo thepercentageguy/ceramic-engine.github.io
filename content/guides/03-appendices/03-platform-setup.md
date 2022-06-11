@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Appendices
 title: Platform Setup
-permalink: guides/appendices/platform-setup/
+permalink: guides/platform-setup/
 ---
 # Platform Setup
 

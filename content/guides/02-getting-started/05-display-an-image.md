@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Display an image
-permalink: guides/getting-started/display-an-image/
+permalink: guides/display-an-image/
 ---
 # Display an image
 

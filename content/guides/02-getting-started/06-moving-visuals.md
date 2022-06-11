@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Moving visuals
-permalink: guides/getting-started/moving-visuals/
+permalink: guides/moving-visuals/
 ---
 # Moving visuals
 
@@ -18,7 +18,7 @@ This guide will show you how to move a **visual** with two different methods:
 
 It’s pretty common in some games or graphical apps to have an update loop, where you execute code at every _**frame**_ of the app. On a regular screen with a refresh rate of 60 FPS, that means your code is executed 60 times per second.
 
-To execute code at every frame, you can bind a handler to the `update` event of the app. Let's add some code inside our `create()` method we got from our [previous guide that displays a haxe logo](/guides/getting-started/display-an-image):
+To execute code at every frame, you can bind a handler to the `update` event of the app. Let's add some code inside our `create()` method we got from our [previous guide that displays a haxe logo](/guides/display-an-image):
 
 <div class="codename">GettingStarted.hx</span></div>
 
@@ -49,7 +49,7 @@ In our example, we are simply rotating the haxe logo over time by updating the `
 <iframe src="/static/apps/rotate-logo" width="640" height="480" loading="lazy" frameborder="0"></iframe>
 <div class="caption">Rotating the image</div>
 
-In the same way we attached a handler to `pointerDown` event before (see [Display a square](/guides/getting-started/display-a-square)), we attached a handler to the app’s `update` event this time.
+In the same way we attached a handler to `pointerDown` event before (see [Display a square](/guides/display-a-square)), we attached a handler to the app’s `update` event this time.
 
 We can tidy that code a bit: as our `GettingStarted` class is a subclass of `ceramic.Scene`, it can directly implement an `update()` method, without having to bind to app’s `update` event explicitly:
 

@@ -3,7 +3,7 @@ layout: examples
 category: examples
 menu: Basics
 title: Drawing lines
-permalink: examples/basics/lines/
+permalink: examples/lines/
 sample: lines
 ---
 

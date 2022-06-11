@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Your first Ceramic project
-permalink: guides/getting-started/your-first-project/
+permalink: guides/your-first-project/
 ---
 # Your first Ceramic project
 
@@ -43,7 +43,7 @@ Congratulations! You’ve just finished building and running your first project!
 
 This command is asking `ceramic` to run your app using `clay` backend and targeting the `web` platform.
 
-Ceramic has multiple backends as mentioned in [The introduction article](/guides/introduction/discover-ceramic), that is why we need to specify which backend and which target to use when building and running an app.
+Ceramic has multiple backends as mentioned in [The introduction article](/guides/discover-ceramic), that is why we need to specify which backend and which target to use when building and running an app.
 
 In practice, you won’t need to call this command by hand many times, because we will use [Visual Studio Code](https://code.visualstudio.com/) and its [Ceramic extension](https://marketplace.visualstudio.com/items?itemName=jeremyfa.ceramic) to continue.
 

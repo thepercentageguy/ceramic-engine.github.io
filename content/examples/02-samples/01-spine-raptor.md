@@ -1,9 +1,9 @@
 ---
 layout: examples
 category: examples
-menu: Use cases
+menu: Samples
 title: Spine animations
-permalink: examples/basics/spine-raptor/
+permalink: examples/spine-raptor/
 sample: spine-raptor
 ---
 

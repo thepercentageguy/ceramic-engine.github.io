@@ -3,13 +3,13 @@ layout: guides
 category: guides
 menu: Appendices
 title: Ceramic via Git
-permalink: guides/appendices/ceramic-via-git/
+permalink: guides/ceramic-via-git/
 ---
 # Install development version from Git
 
 If you want to modify Ceramic or access the latest development version, you can install it via Git.
 
-<p class="extra-info">Please note that you should only install Ceramic via Git if you know what you are doing and are familiar with Git in general. If you are new to Ceramic, you are strongly advised to follow standard <a href="/guides/getting-started/install-ceramic/">installation instructions</a> instead.<p>
+<p class="extra-info">Please note that you should only install Ceramic via Git if you know what you are doing and are familiar with Git in general. If you are new to Ceramic, you are strongly advised to follow standard <a href="/guides/install-ceramic/">installation instructions</a> instead.<p>
 
 ## Install node.js
 

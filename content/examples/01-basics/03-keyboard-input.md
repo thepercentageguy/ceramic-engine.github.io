@@ -3,7 +3,7 @@ layout: examples
 category: examples
 menu: Basics
 title: Keyboard input
-permalink: examples/basics/keyboard-input/
+permalink: examples/keyboard-input/
 sample: keyboard-input
 ---
 

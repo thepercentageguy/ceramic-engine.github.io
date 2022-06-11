@@ -3,14 +3,14 @@ layout: guides
 category: guides
 menu: Introduction
 title: Discover Ceramic
-permalink: guides/introduction/discover-ceramic/
+permalink: guides/discover-ceramic/
 ---
 # Discover Ceramic, a cross-platform and open-source 2D framework
 
 _The following introduction was originally published by Jérémy Faivre on his own [blog](https://jeremyfa.com/what-is-ceramic-engine/). This new version is now part of Ceramic website's guides section._
 
 <p class="extra-info">Just want to start using <strong>Ceramic</strong>?<br />
-Follow the <strong>Getting Started</strong> guide ➔ <a href="/guides/getting-started/install-ceramic">Install Ceramic</a></p>
+Follow the <strong>Getting Started</strong> guide ➔ <a href="/guides/install-ceramic">Install Ceramic</a></p>
 
 ## What is ceramic?
 

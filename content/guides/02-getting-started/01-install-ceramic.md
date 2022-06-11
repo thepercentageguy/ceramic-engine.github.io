@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Install Ceramic
-permalink: guides/getting-started/install-ceramic/
+permalink: guides/install-ceramic/
 ---
 # Install Ceramic
 
@@ -11,7 +11,7 @@ permalink: guides/getting-started/install-ceramic/
 
 Here you are, getting for the first time your hands dirty with Ceramic!
 
-<p class="extra-info">If you ended up here and don’t know what is <strong>Ceramic</strong>, you might want to read this introduction article first ➔ <a href="/guides/introduction/discover-ceramic">Discover Ceramic, a cross-platform and open-source 2D framework</a>.</p>
+<p class="extra-info">If you ended up here and don’t know what is <strong>Ceramic</strong>, you might want to read this introduction article first ➔ <a href="/guides/discover-ceramic">Discover Ceramic, a cross-platform and open-source 2D framework</a>.</p>
 
 ## Install Haxe
 

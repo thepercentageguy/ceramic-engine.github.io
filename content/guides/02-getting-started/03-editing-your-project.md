@@ -3,7 +3,7 @@ layout: guides
 category: guides
 menu: Getting Started
 title: Editing your project
-permalink: guides/getting-started/editing-your-project/
+permalink: guides/editing-your-project/
 ---
 # Editing your project
 
@@ -24,7 +24,7 @@ Open it from Visual Studio Code: **File** > **Open…** > choose `myproject` fol
 
 Code completion in Haxe files (`*.hx`) should work too.
 
-<p class="extra-info">Read more about a default project's content ➔ <a href="/guides/appendices/inside-a-default-project">Inside a default project</a></p>
+<p class="extra-info">Read more about a default project's content ➔ <a href="/guides/inside-a-default-project">Inside a default project</a></p>
 
 ## Run the project from VSCode
 
