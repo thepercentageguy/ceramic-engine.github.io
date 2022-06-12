@@ -60,7 +60,7 @@ for (item of allExamples) {
         <main>
             <% if (page.url != '/examples/') { %>
                 <h1><%= title %></h1>
-                <iframe src="https://ceramic-engine.com/ceramic-samples/<%= sample %>/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+                <iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/<%= sample %>/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
                 <div class="caption rectangle">
                 <a href="https://ceramic-engine.com/ceramic-samples/<%= sample %>/">Run in full page</a>
                 —

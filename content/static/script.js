@@ -122,4 +122,24 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     }
 
+    function focusSampleIframe() {
+
+        // Timing is a bit arbitrary but that seems to work well enough
+        var iframe = document.querySelector('.page-standard .page-container .content-right main .ceramic-sample-iframe');
+        if (iframe != null) {
+            if (iframe.contentWindow != null)
+                iframe.contentWindow.focus();
+            var intervalId = setInterval(function() {
+                if (iframe.contentWindow != null)
+                    iframe.contentWindow.focus();
+            }, 100);
+            setTimeout(function() {
+                clearInterval(intervalId);
+            }, 5000);
+        }
+
+    }
+
+    window.focusSampleIframe = focusSampleIframe();
+
 });
