@@ -13,9 +13,9 @@ If you want to modify Ceramic or access the latest development version, you can 
 
 ## Install node.js
 
-[Download and install node v10.16.3](https://nodejs.org/dist/v10.16.3/)
+[Download and install node v14.19.1](https://nodejs.org/dist/v14.19.1/)
 
-<p class="extra-info">Be sure to use this exact version of <code>node</code> (<code>v10.16.3</code>) to install Ceramic. Ceramic may not work as expected otherwise. This is only required during installation. After the installation is done, you can uninstall this version of node as it won't be needed anymore.<p>
+<p class="extra-info">Be sure to use this exact version of <code>node</code> (<code>v14.19.1</code>) to install Ceramic. Ceramic may not work as expected otherwise. This is only required during installation. After the installation is done, you can uninstall this version of node as it won't be needed anymore.<p>
 
 ## Install Git if needed
 
