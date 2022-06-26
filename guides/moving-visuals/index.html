@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Moving visuals - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Getting Started</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Appendices</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Moving visuals</h1>
+<p>This guide will show you how to move a <strong>visual</strong> with two different methods:</p>
+<ol>
+<li>By updating the visual over time</li>
+<li>By using visual transitions</li>
+</ol>
+<p class="extra-info">In Ceramic, a <strong>visual</strong> is any instance of a class that inherits from <code>Visual</code> (<code>ceramic.Visual</code>), and it's something expected to be displayed on screen. In this guide, like in the previous guides, we use an instance of <code>Quad</code> class, but the following samples to move a <strong>visual</strong> should work with any <code>Visual</code> subclass like <code>Quad</code>, but also <code>Text</code>, <code>Mesh</code>, etc...</p>
+<h2 id="1.-updating-the-visual-over-time" tabindex="-1">1. Updating the visual over time <a class="header-anchor" href="#1.-updating-the-visual-over-time"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>It’s pretty common in some games or graphical apps to have an update loop, where you execute code at every <em><strong>frame</strong></em> of the app. On a regular screen with a refresh rate of 60 FPS, that means your code is executed 60 times per second.</p>
+<p>To execute code at every frame, you can bind a handler to the <code>update</code> event of the app. Let's add some code inside our <code>create()</code> method we got from our <a href="/guides/display-an-image">previous guide that displays a haxe logo</a>:</p>
+<div class="codename">GettingStarted.hx</span></div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">var</span> logo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>HAXE_LOGO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>logo<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Bind to app's 'update' event</span></span>
+<span class="highlight-line">        app<span class="token punctuation">.</span><span class="token function">onUpdate</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> delta <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            <span class="token comment">// This code is executed at every frame</span></span>
+<span class="highlight-line">            logo<span class="token punctuation">.</span>rotation <span class="token operator">+</span><span class="token operator">=</span> delta <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span></code></pre>
+<p>This time, we are listening to app’s <code>update</code> event. This event is fired at every frame, calling our callback each time.</p>
+<p>Our handler has a delta argument which represent the amount of elapsed time since last frame (in seconds). This allows us to know how much time has passed and apply some change accordingly.</p>
+<p>In our example, we are simply rotating the haxe logo over time by updating the <code>rotation</code> property of the quad.</p>
+<iframe src="/static/apps/rotate-logo" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<div class="caption">Rotating the image</div>
+<p>In the same way we attached a handler to <code>pointerDown</code> event before (see <a href="/guides/display-a-square">Display a square</a>), we attached a handler to the app’s <code>update</code> event this time.</p>
+<p>We can tidy that code a bit: as our <code>GettingStarted</code> class is a subclass of <code>ceramic.Scene</code>, it can directly implement an <code>update()</code> method, without having to bind to app’s <code>update</code> event explicitly:</p>
+<div class="codename">GettingStarted.hx</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Color<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> GettingStarted <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">var</span> logo<span class="token punctuation">:</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">preload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Load haxe logo image</span></span>
+<span class="highlight-line">        assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>HAXE_LOGO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        logo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>HAXE_LOGO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>logo<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">update</span><span class="token punctuation">(</span>delta<span class="token punctuation">:</span>Float<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Executed at every frame</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span>rotation <span class="token operator">+</span><span class="token operator">=</span> delta <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>This code does the same thing as before, but using <code>ceramic.Scene</code>‘s predefined <code>update()</code> method instead of binding to <code>app.update</code> event explicitly.</p>
+<h2 id="2.-using-visual-transitions" tabindex="-1">2. Using visual transitions <a class="header-anchor" href="#2.-using-visual-transitions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>The following code is another example of what you could do. We are adding some interactivity to the Haxe logo we loaded: every time you click on the logo, it moves to a different position, scale and rotation using a <em><strong>visual transition</strong></em>:</p>
+<div class="codename">GettingStarted.hx</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>TouchInfo<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">using</span> ceramic<span class="token punctuation">.</span>VisualTransition<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> GettingStarted <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">var</span> logo<span class="token punctuation">:</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">preload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Load haxe logo image</span></span>
+<span class="highlight-line">        assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>HAXE_LOGO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        logo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>HAXE_LOGO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>logo<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">onPointerDown</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> handleLogoClick<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">handleLogoClick</span><span class="token punctuation">(</span>info<span class="token punctuation">:</span>TouchInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Use transition API to move the logo</span></span>
+<span class="highlight-line">        <span class="token comment">// at a random position/scale/rotation</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">transition</span><span class="token punctuation">(</span>QUAD_EASE_IN_OUT<span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">,</span> logo <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">            logo<span class="token punctuation">.</span>x <span class="token operator">=</span> width <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">0.1</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            logo<span class="token punctuation">.</span>y <span class="token operator">=</span> height <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">0.1</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            logo<span class="token punctuation">.</span>scaleX <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">0.25</span> <span class="token operator">+</span> <span class="token number">0.75</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            logo<span class="token punctuation">.</span>scaleY <span class="token operator">=</span> logo<span class="token punctuation">.</span>scaleX<span class="token punctuation">;</span></span>
+<span class="highlight-line">            logo<span class="token punctuation">.</span>rotation <span class="token operator">=</span> <span class="token number">360</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>In that last example we used one of the various utilities available in Ceramic: <code>ceramic.VisualTransition</code>, which lets you interpolate visual properties with just a few lines of code. Here’s the result:</p>
+<iframe src="/static/apps/click-move-logo" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<div class="caption">Click on the logo and see it change position</div>
+<h3 id="that%E2%80%99s-all-for-now" tabindex="-1">That’s all for now <a class="header-anchor" href="#that%E2%80%99s-all-for-now"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>These examples didn’t let you do much, but I hope it gave you a good starting point to create more things with Ceramic!</p>
+<p>At the moment, <strong>Ceramic</strong> is pretty new to the public and although it's already very capable, its documentation is quite sparse. In order to fix that, this website will be updated regularly with more content in the coming months.</p>
+<p>You can join the <code>#ceramic</code> channel on <a href="https://discordapp.com/invite/0uEuWH3spjck73Lo">Haxe Discord server</a> if you have any question, need help or simply want to share what you did with Ceramic.</p>
+
+            
+                
+                            <hr />
+                            <p>
+                                Continue reading &#10132; <a href="/guides/inside-a-default-project/">Inside a default project</a> (Appendices)
+                            </p>
+                            
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

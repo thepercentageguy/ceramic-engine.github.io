@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Display an image - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Getting Started</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Appendices</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Display an image</h1>
+<p>In the previous guide, we learned to use <code>Quad</code> objects to display plain colored squares or rectangles, but they can also be textured to display images.</p>
+<p>We will do that by adding an image file into our <code>assets/</code> folder and load it into our scene. I’ll use a PNG file of the <a href="/static/img/haxe-logo.png">Haxe logo</a> (named <code>haxe-logo.png</code>) in my example.</p>
+<p>Download the PNG file from the link above, then put it inside your project’s assets/ folder (you can also try with another image if you want).</p>
+<h2 id="loading-the-image" tabindex="-1">Loading the image <a class="header-anchor" href="#loading-the-image"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>In our <code>GettingStarted</code> scene (created in the previous guides), let’s add a new <code>preload()</code> method right before the <code>create()</code> method:</p>
+<div class="codename">GettingStarted.hx</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Color<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> GettingStarted <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">preload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Load haxe logo image</span></span>
+<span class="highlight-line">        assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>HAXE_LOGO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token operator">...</span></span></code></pre>
+<p>The <code>preload()</code> method is called when the scene is preloading. During preload, you can use the scene’s asset manager (the <code>assets</code> object) to make it load the assets your want.</p>
+<p>Ceramic generates constant types from asset files (here we got <code>Images.HAXE_LOGO</code> constant from <code>haxe-logo.png</code> file). If you type <code>Images.|</code> in your code, it will autocomplete with the image assets available:</p>
+<p><img src="/static/img/images-assets-completion.gif" alt="Images assets completion"></p>
+<p>That’s enough to let ceramic load our image!</p>
+<p>Now let’s get back to our <code>create()</code> method. We will use a quad again, but this time to display the image we have loaded:</p>
+<div class="codename">GettingStarted.hx</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">var</span> logo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>HAXE_LOGO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        logo<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>logo<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span></code></pre>
+<p>This time, instead of setting an explicit size to our quad, we simply assign it a texture from our <code>assets</code> object. The quad will automatically set its size to fit the image texture we have assigned.</p>
+<p>Then we put that quad at the center of the scene, with its centered anchor, just like what we did with the previous quad example:</p>
+<p><img src="/static/img/window-haxe-logo.png" alt="Window Haxe logo"></p>
+<p>Wonderful! You now know how to display images with ceramic 🤓.</p>
+
+            
+                
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="/guides/moving-visuals/">Moving visuals</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

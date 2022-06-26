@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Ceramic via Git - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Getting Started</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Appendices</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Install development version from Git</h1>
+<p>If you want to modify Ceramic or access the latest development version, you can install it via Git.</p>
+<p class="extra-info">Please note that you should only install Ceramic via Git if you know what you are doing and are familiar with Git in general. If you are new to Ceramic, you are strongly advised to follow standard <a href="/guides/install-ceramic/">installation instructions</a> instead.<p>
+<h2 id="install-node.js" tabindex="-1">Install node.js <a class="header-anchor" href="#install-node.js"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p><a href="https://nodejs.org/dist/v14.19.1/">Download and install node v14.19.1</a></p>
+<p class="extra-info">Be sure to use this exact version of <code>node</code> (<code>v14.19.1</code>) to install Ceramic. Ceramic may not work as expected otherwise. This is only required during installation. After the installation is done, you can uninstall this version of node as it won't be needed anymore.<p>
+<h2 id="install-git-if-needed" tabindex="-1">Install Git if needed <a class="header-anchor" href="#install-git-if-needed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>If not already available on your machine, <a href="https://git-scm.com/downloads">install Git from git-scm.com</a></p>
+<h2 id="do-the-actual-installation-via-git" tabindex="-1">Do the actual installation via Git <a class="header-anchor" href="#do-the-actual-installation-via-git"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Now that <code>git</code> and <code>node</code> are available, open a <strong>Terminal</strong> (or <strong>Powershell</strong> on Windows), move to the directory where you want to install Ceramic, and run this script:</p>
+<div class="codename">Installation script</div>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line"><span class="token function">git</span> clone https://github.com/ceramic-engine/ceramic.git</span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> ceramic</span>
+<span class="highlight-line"><span class="token function">git</span> submodule update --init --recursive</span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> node</span>
+<span class="highlight-line"><span class="token function">npm</span> ci</span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/tools</span>
+<span class="highlight-line">./npm ci</span>
+<span class="highlight-line">./node post-install.js</span>
+<span class="highlight-line">./ceramic <span class="token function">link</span></span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/runner</span>
+<span class="highlight-line"><span class="token punctuation">..</span>/tools/npm ci</span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></span>
+<span class="highlight-line">ceramic</span></code></pre>
+<p class="extra-info">If <code>./ceramic link</code> command fails on Mac/Linux, you might want to try to run it with administrator rights instead: <code>sudo ./ceramic link</code>.<p>
+<p>You should now be able to run <code>ceramic</code> command from anywhere:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">ceramic</span></code></pre>
+<h2 id="update-your-existing-ceramic-via-git" tabindex="-1">Update your existing Ceramic via Git <a class="header-anchor" href="#update-your-existing-ceramic-via-git"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>When you install Ceramic via Git, you need to update it via Git as well. To do so, open a <strong>Terminal</strong> again, set your current directory to your Ceramic installation and run the following script:</p>
+<div class="codename">Update script</div>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line"><span class="token function">git</span> pull</span>
+<span class="highlight-line"><span class="token function">git</span> submodule update --init --recursive</span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> tools</span>
+<span class="highlight-line">./npm ci</span>
+<span class="highlight-line">./node post-install.js</span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/runner</span>
+<span class="highlight-line"><span class="token punctuation">..</span>/tools/npm ci</span>
+<span class="highlight-line"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></span>
+<span class="highlight-line">ceramic</span></code></pre>
+<p class="extra-info">If you forgot where you have installed Ceramic, you can find it using <code>ceramic&nbsp;path</code> command, which will give you a path like <code>/your/path/to/ceramic/tools</code>. Your Git installation directory will be that path, without the <code>/tools</code> suffix.<p>
+<p class="extra-info">When updating an existing Ceramic installation, you don't need to have a specific <code>node</code> version installed on your machine, because the script is using the <code>node</code> binary provided with the existing installation.<p>
+            
+                
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="/guides/platform-setup/">Platform Setup</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

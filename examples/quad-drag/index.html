@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Dragging a quad - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-examples" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li class="selected"><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title selected">Basics</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/examples/hello-world/">Hello World</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/examples/quad-drag/">Dragging a quad</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/keyboard-input/">Keyboard input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/gamepad-input/">Gamepad input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/lines/">Drawing lines</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/mesh-2d/">2D Mesh</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Samples</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/examples/spine-raptor/">Spine animations</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/spaceship-bullet/">Spaceship bullet</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/ceramic-demo/">Ceramic demo</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/tilemap-pixelart/">Tilemap Pixel Art</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/auto-tiling/">Auto-Tiling</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            
+                <h1>Dragging a quad</h1>
+                <iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/quad-drag/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+                <div class="caption rectangle">
+                <a href="https://ceramic-engine.com/ceramic-samples/quad-drag/">Run in full page</a>
+                —
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/quad-drag">Read full source code on GitHub</a>
+                </div>
+                
+                <hr />
+                <p>A simple scene to display a quad and drag it with pointer (touch/mouse) events.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>TouchInfo<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Color<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> QuadDrag <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">var</span> quad<span class="token punctuation">:</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">var</span> quadStartX<span class="token punctuation">:</span>Float <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> quadStartY<span class="token punctuation">:</span>Float <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> pointerStartX<span class="token punctuation">:</span>Float <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> pointerStartY<span class="token punctuation">:</span>Float <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Create and display a quad</span></span>
+<span class="highlight-line">        quad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>YELLOW<span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> screen<span class="token punctuation">.</span>height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>quad<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Bind pointer down event</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">onPointerDown</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> quadDown<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">quadDown</span><span class="token punctuation">(</span>info<span class="token punctuation">:</span>TouchInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Start dragging</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>RED<span class="token punctuation">;</span></span>
+<span class="highlight-line">        quadStartX <span class="token operator">=</span> quad<span class="token punctuation">.</span>x<span class="token punctuation">;</span></span>
+<span class="highlight-line">        quadStartY <span class="token operator">=</span> quad<span class="token punctuation">.</span>y<span class="token punctuation">;</span></span>
+<span class="highlight-line">        pointerStartX <span class="token operator">=</span> screen<span class="token punctuation">.</span>pointerX<span class="token punctuation">;</span></span>
+<span class="highlight-line">        pointerStartY <span class="token operator">=</span> screen<span class="token punctuation">.</span>pointerY<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Follow movement from screen</span></span>
+<span class="highlight-line">        screen<span class="token punctuation">.</span><span class="token function">onPointerMove</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> quadMove<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Stop dragging when releasing pointer</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">oncePointerUp</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> quadUp<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">quadMove</span><span class="token punctuation">(</span>info<span class="token punctuation">:</span>TouchInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Update quad position from pointer movement</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">            quadStartX <span class="token operator">+</span> screen<span class="token punctuation">.</span>pointerX <span class="token operator">-</span> pointerStartX<span class="token punctuation">,</span></span>
+<span class="highlight-line">            quadStartY <span class="token operator">+</span> screen<span class="token punctuation">.</span>pointerY <span class="token operator">-</span> pointerStartY</span>
+<span class="highlight-line">        <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">quadUp</span><span class="token punctuation">(</span>info<span class="token punctuation">:</span>TouchInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Unbind move event</span></span>
+<span class="highlight-line">        screen<span class="token punctuation">.</span><span class="token function">offPointerMove</span><span class="token punctuation">(</span>quadMove<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>YELLOW<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+
+                
+                
+                        <hr />
+                        <p>
+                            Next example &#10132; <a href="/examples/keyboard-input/">Keyboard input</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

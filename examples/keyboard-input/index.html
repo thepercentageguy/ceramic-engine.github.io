@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Keyboard input - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-examples" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li class="selected"><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title selected">Basics</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/examples/hello-world/">Hello World</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/quad-drag/">Dragging a quad</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/examples/keyboard-input/">Keyboard input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/gamepad-input/">Gamepad input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/lines/">Drawing lines</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/mesh-2d/">2D Mesh</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Samples</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/examples/spine-raptor/">Spine animations</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/spaceship-bullet/">Spaceship bullet</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/ceramic-demo/">Ceramic demo</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/tilemap-pixelart/">Tilemap Pixel Art</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/auto-tiling/">Auto-Tiling</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            
+                <h1>Keyboard input</h1>
+                <iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/keyboard-input/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+                <div class="caption rectangle">
+                <a href="https://ceramic-engine.com/ceramic-samples/keyboard-input/">Run in full page</a>
+                —
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/keyboard-input">Read full source code on GitHub</a>
+                </div>
+                
+                <hr />
+                <p>Using <code>keyDown</code> and <code>keyUp</code> events from <code>input</code> to listen to keyboard input.</p>
+<p class="extra-info"><strong>Key codes</strong> are used to know which key is pressed on the keyboard and depend on the user keyboard layout (QWERTY, AZERTY...).</p>
+<p class="extra-info"><strong>Scan codes</strong> represent physical keys on the keyboard. They are useful because they always follow a standard QWERTY layout and are independent from the user's keyboard layout. For example, if you want your W,A,S,D controls to work with any keyboard, you should use scan codes!</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Key<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>KeyCode<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>ScanCode<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Text<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> MainScene <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+    <span class="token comment">/**
+<span class="highlight-line">     * A text object to display info about keyboard input</span>
+     */</span>
+<span class="highlight-line">    <span class="token keyword">var</span> text<span class="token punctuation">:</span>Text<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+    <span class="token comment">/**
+<span class="highlight-line">     * The list of currently pressed key codes</span>
+     */</span>
+<span class="highlight-line">    <span class="token keyword">var</span> pressedKeyCodes<span class="token punctuation">:</span>Array<span class="token operator">&lt;</span>KeyCode<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+    <span class="token comment">/**
+<span class="highlight-line">     * The list of currently pressed scan codes</span>
+     */</span>
+<span class="highlight-line">    <span class="token keyword">var</span> pressedScanCodes<span class="token punctuation">:</span>Array<span class="token operator">&lt;</span>ScanCode<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Use a text object to display info about keyboard input</span></span>
+<span class="highlight-line">        text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        text<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        text<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        text<span class="token punctuation">.</span>align <span class="token operator">=</span> CENTER<span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Bind keyboard input events</span></span>
+<span class="highlight-line">        input<span class="token punctuation">.</span><span class="token function">onKeyDown</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> keyDown<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        input<span class="token punctuation">.</span><span class="token function">onKeyUp</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> keyUp<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token function">updateText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">keyDown</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span>Key<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pressedKeyCodes<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>keyCode<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            pressedKeyCodes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>keyCode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            pressedScanCodes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>scanCode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token function">updateText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">keyUp</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span>Key<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        pressedKeyCodes<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>keyCode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        pressedScanCodes<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>scanCode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token function">updateText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">updateText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Update text depending on the currently pressed keys</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>pressedKeyCodes<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            <span class="token keyword">var</span> content <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">0.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>pressedKeyCodes<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">                <span class="token keyword">var</span> keyCode <span class="token operator">=</span> pressedKeyCodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">                <span class="token keyword">var</span> scanCode <span class="token operator">=</span> pressedScanCodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">                content<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">                    KeyCode<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span>keyCode<span class="token punctuation">)</span> <span class="token operator">+</span></span>
+<span class="highlight-line">                    <span class="token string">' (key code)          '</span> <span class="token operator">+</span></span>
+<span class="highlight-line">                    ScanCode<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span>scanCode<span class="token punctuation">)</span> <span class="token operator">+</span></span>
+<span class="highlight-line">                    <span class="token string">' (scan code)'</span></span>
+<span class="highlight-line">                <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            <span class="token punctuation">}</span></span>
+<span class="highlight-line">            text<span class="token punctuation">.</span>content <span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">        <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            text<span class="token punctuation">.</span>content <span class="token operator">=</span> <span class="token string">'press any key (keyboard)'</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+
+                
+                
+                        <hr />
+                        <p>
+                            Next example &#10132; <a href="/examples/gamepad-input/">Gamepad input</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

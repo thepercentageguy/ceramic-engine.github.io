@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Hello World - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-examples" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li class="selected"><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title selected">Basics</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li class="selected">
+                                <a href="/examples/hello-world/">Hello World</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/quad-drag/">Dragging a quad</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/keyboard-input/">Keyboard input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/gamepad-input/">Gamepad input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/lines/">Drawing lines</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/mesh-2d/">2D Mesh</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Samples</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/examples/spine-raptor/">Spine animations</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/spaceship-bullet/">Spaceship bullet</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/ceramic-demo/">Ceramic demo</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/tilemap-pixelart/">Tilemap Pixel Art</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/auto-tiling/">Auto-Tiling</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            
+                <h1>Hello World</h1>
+                <iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/hello-world/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+                <div class="caption rectangle">
+                <a href="https://ceramic-engine.com/ceramic-samples/hello-world/">Run in full page</a>
+                —
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/hello-world">Read full source code on GitHub</a>
+                </div>
+                
+                <hr />
+                <p>A minimal <strong>Hello World</strong> sample which shows you how to display text on screen.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">text<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>WHITE<span class="token punctuation">;</span></span>
+<span class="highlight-line">text<span class="token punctuation">.</span>content <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">text<span class="token punctuation">.</span>pointSize <span class="token operator">=</span> <span class="token number">48</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">text<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">text<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> screen<span class="token punctuation">.</span>height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+
+                
+                
+                        <hr />
+                        <p>
+                            Next example &#10132; <a href="/examples/quad-drag/">Dragging a quad</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

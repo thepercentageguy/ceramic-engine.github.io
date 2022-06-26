@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Your first Ceramic project - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Getting Started</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Appendices</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Your first Ceramic project</h1>
+<p>Now that <code>ceramic</code> is installed, we can use it to create a new project. Open a terminal and type:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">ceramic init --name myproject</span></code></pre>
+<p>This should generate and setup your project. Wait a bit, that should not be long!</p>
+<p><img src="/static/img/ceramic-init.gif" alt="Ceramic init"></p>
+<h2 id="run-your-project" tabindex="-1">Run your project <a class="header-anchor" href="#run-your-project"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Your project is generated, you can now try to run it to ensure it works.</p>
+<p>Set current directory to <strong>myproject</strong>:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line"><span class="token builtin class-name">cd</span> myproject</span></code></pre>
+<p>Then call ceramic to run your generated app:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">ceramic clay run web</span></code></pre>
+<p>You should see a window open and show the default ceramic app:</p>
+<p><img src="/static/img/ceramic-window-1.png" alt="Ceramic window"></p>
+<p>Congratulations! You’ve just finished building and running your first project!</p>
+<h3 id="explaining%3A-ceramic-clay-run-web" tabindex="-1">Explaining: <code>ceramic clay run web</code> <a class="header-anchor" href="#explaining%3A-ceramic-clay-run-web"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>This command is asking <code>ceramic</code> to run your app using <code>clay</code> backend and targeting the <code>web</code> platform.</p>
+<p>Ceramic has multiple backends as mentioned in <a href="/guides/discover-ceramic">The introduction article</a>, that is why we need to specify which backend and which target to use when building and running an app.</p>
+<p>In practice, you won’t need to call this command by hand many times, because we will use <a href="https://code.visualstudio.com/">Visual Studio Code</a> and its <a href="https://marketplace.visualstudio.com/items?itemName=jeremyfa.ceramic">Ceramic extension</a> to continue.</p>
+<p class="extra-info">If you plan to continue using CLI instead of Visual Studio Code later, the full command to run needs additional arguments:<p>
+<div class="onepx-margin"></div>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">ceramic clay run web --setup --assets</span></code></pre>
+<div class="onepx-margin"></div>
+<p class="extra-info">
+<code>--assets</code> argument will ensure your exported project’s assets are kept in sync with your original assets folder in case they changed since last run (but you don’t need to worry about this if you use Visual Studio Code as showcased in the next guide).
+<br /></br />
+<code>--setup</code> argument will ensure your project is properly setup for the given target. This is particularly useful when you build a target for the first time, but it doesn’t hurt keeping the argument for every run.
+</p>
+            
+                
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="/guides/editing-your-project/">Editing your project</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

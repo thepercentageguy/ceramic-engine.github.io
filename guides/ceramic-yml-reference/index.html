@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Reference: ceramic.yml - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Getting Started</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Appendices</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Reference: <code>ceramic.yml</code></h1>
+<p>This guid explains how Ceramic project files work and which options are available.</p>
+<p>Project files in Ceramic are written in <a href="http://yaml.org/">YAML markup language</a>. Here is an example of a minimal Ceramic app project file:</p>
+<div class="codename">ceramic.yml</div>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token key atrule">package</span><span class="token punctuation">:</span> mycompany.myproject</span>
+<span class="highlight-line">    <span class="token key atrule">name</span><span class="token punctuation">:</span> myproject</span>
+<span class="highlight-line">    <span class="token key atrule">displayName</span><span class="token punctuation">:</span> My project</span>
+<span class="highlight-line">    <span class="token key atrule">author</span><span class="token punctuation">:</span> My Company</span>
+<span class="highlight-line">    <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'1.0'</span></span></code></pre>
+<p>It is typically located in your Ceramic project root directory.</p>
+<h2 id="haxe-libraries" tabindex="-1">Haxe libraries <a class="header-anchor" href="#haxe-libraries"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>You can add haxe library dependencies with the <code>libs:</code> options.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># ...</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token key atrule">libs</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> lib1</span>
+<span class="highlight-line">        <span class="token punctuation">-</span> <span class="token key atrule">lib2</span><span class="token punctuation">:</span> 1.0.0 <span class="token comment"># An explicit version can be provided</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># A git repository URL can be provided as well</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> <span class="token key atrule">lib3</span><span class="token punctuation">:</span> git<span class="token punctuation">:</span>https<span class="token punctuation">:</span>//github.com/somelibauthor/lib3.git</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># And also, a lib can point to a local path</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> <span class="token key atrule">lib4</span><span class="token punctuation">:</span> path<span class="token punctuation">:</span>some/folder/to/lib4</span></code></pre>
+<p>Specified libs can be installed by <code>ceramic</code> by running in your project directory:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">ceramic libs</span></code></pre>
+<h2 id="adding-plugins" tabindex="-1">Adding plugins <a class="header-anchor" href="#adding-plugins"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Your ceramic project can be extended with plugins. Use <code>plugins</code> to add plugins.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># ...</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token key atrule">plugins</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># Enable arcade physics</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> arcade</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># Enable spine animations</span></span>
+<span class="highlight-line">        <span class="token comment"># (a Spine license is required)</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> spine</span></code></pre>
+<p>You can <a href="https://github.com/ceramic-engine/ceramic/tree/master/plugins">take a look at the list of built-in Ceramic plugins</a>.</p>
+<p>You can also create your own plugins. These just have to be put inside a local <code>plugins/</code> folder at the root of your Ceramic project.</p>
+<p class="extra-info">A Ceramic plugin is different from a regular Haxe library. Plugins can extend Ceramic in ways that are not possible with standard Haxe libraries, it can be used to patch your Ceramic project's config, provide new command line tools or even a new backend to support additional platforms.</p>
+<h2 id="defines" tabindex="-1">Defines <a class="header-anchor" href="#defines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>You can add defines that may affect how you project is built. These defines will be applied to generated haxe build file as well (HXML)</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># ...</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token key atrule">defines</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># This is equivalent to -D some_define in HXML</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> some_define</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># A define with an explicit value</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> <span class="token key atrule">some_other_define</span><span class="token punctuation">:</span> <span class="token string">'my value'</span></span></code></pre>
+<h2 id="custom-hxml" tabindex="-1">Custom HXML <a class="header-anchor" href="#custom-hxml"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>You can add custom raw HXML using <code>hxml:</code> property.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># ...</span></span>
+<span class="highlight-line"></span>
+    <span class="token key atrule">hxml</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+        --macro some.Macro.init()</span></code></pre>
+<h2 id="paths" tabindex="-1">Paths <a class="header-anchor" href="#paths"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>The default project source path is <code>src/</code>, but you can add more:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># ...</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token key atrule">paths</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> some/directory</span></code></pre>
+<h2 id="conditional-compilation" tabindex="-1">Conditional compilation <a class="header-anchor" href="#conditional-compilation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>We can create settngs that will only be applied on some conditions. The example below adds some HXML and defines only when building for iOS.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># ...</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token key atrule">if ios</span><span class="token punctuation">:</span></span>
+        <span class="token key atrule">+hxml</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            --macro some.Macro.runForIos()</span>
+<span class="highlight-line">        <span class="token key atrule">+defines</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token punctuation">-</span> some_flag_only_on_ios</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token key atrule">if web</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token key atrule">+defines</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token punctuation">-</span> js<span class="token punctuation">-</span>source<span class="token punctuation">-</span>map</span></code></pre>
+<p class="extra-info">Note: the <code>+</code> character before <code>hxml</code> and <code>defines</code> specifies that we _append_ content to the existing settings. This means <code>some_flag_only_on_ios</code> will be added to the current list of defines, and that <code>--macro some.Macro.runForIos()</code> will be concatenated to the existing hxml string. If you don't use the <code>+</code> character, it will simply replace the previous values entirely.</p>
+<p class="extra-info">You can also use <code>-</code> to do the opposite: remove content from the previous values.</p>
+<h2 id="hooks" tabindex="-1">Hooks <a class="header-anchor" href="#hooks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Execute custom script using build hooks.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token key atrule">app</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># ...</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token key atrule">+hooks</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token punctuation">-</span> <span class="token key atrule">when</span><span class="token punctuation">:</span> end build</span>
+<span class="highlight-line">          <span class="token key atrule">command</span><span class="token punctuation">:</span> some/custom/command</span>
+<span class="highlight-line">          <span class="token key atrule">args</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span></code></pre>
+<p>Available hooks:</p>
+<ul>
+<li>begin clean, end clean</li>
+<li>begin build, end build</li>
+<li>begin run, end run</li>
+</ul>
+
+            
+                
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

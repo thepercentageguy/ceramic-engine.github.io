@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Display a square - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Getting Started</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Appendices</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Display a square</h1>
+<p>I know we are not making a hit game yet, but let’s start from the beginning: displaying a plain old yellow square 🟨</p>
+<p>Edit <code>GettingStarted</code>‘s <code>create()</code> method to do that:</p>
+<div class="codename">GettingStarted.hx</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Color<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> GettingStarted <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Display a yellow square</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> quad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>YELLOW<span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>quad<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Build and run the project. This is what you should see:</p>
+<p><img src="/static/img/yellow-square-window.png" alt="Yellow square window"></p>
+<h3 id="let%E2%80%99s-go-over-this-code" tabindex="-1">Let’s go over this code <a class="header-anchor" href="#let%E2%80%99s-go-over-this-code"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>That’s great! We are displaying a yellow square!
+(everybody has to start somewhere 😌)</p>
+<p>Let’s examinate what we did.</p>
+<br />
+<p><strong>1. Import 2 new types: <code>ceramic.Quad</code> and <code>ceramic.Color</code>:</strong></p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Quad<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Color<span class="token punctuation">;</span></span></code></pre>
+<p><code>Quad</code> class is used to display quads, that is, a polygon composed of two triangles that will form a square or a rectangle. It’s a very common and versatile type of ceramic API.</p>
+<p>Color is an utility to work with RGB colors.</p>
+<br />
+<p><strong>2. Instanciate a new <code>Quad</code> object:</strong></p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        <span class="token keyword">var</span> quad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<br />
+<p><strong>3. Set the <code>width</code> and <code>height</code> of the quad using its <code>size()</code> method:</strong></p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>This is the equivalent of writing:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        quad<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span></span></code></pre>
+<p class="extra-info">You could also turn the square into a rectangle by changing the <code>width</code> or <code>height</code> values.</p>
+<br />
+<p><strong>4. Set the color of the quad as <span style="color:#ffdd00">yellow</span></strong></p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        quad<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>YELLOW<span class="token punctuation">;</span></span></code></pre>
+<br />
+<p><strong>5. Position the quad at the center of the scene</strong></p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Note that we also set the anchor of the quad (<code>0.5</code>, <code>0.5</code>) to its own center, because by default, a quad anchor is at its top left. If we did set its anchor to (<code>1</code>, <code>1</code>), it would have been centered to its bottom right etc…</p>
+<p>Also, we could have done the same thing with the following code. That is strictly equivalent:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        quad<span class="token punctuation">.</span>x <span class="token operator">=</span> width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>y <span class="token operator">=</span> height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>anchorX <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>anchorY <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span></span></code></pre>
+<br />
+<p><strong>6. Finally, add the quad as a child of the scene</strong></p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        <span class="token function">add</span><span class="token punctuation">(</span>quad<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<br />
+<p>Ok that’s nice, we displayed a yellow square at the middle of the screen. What now?</p>
+<p>Let’s add some interactivity, so that it will be… an <em>interactive yellow square</em> 🟨 🥁</p>
+<h2 id="adding-interactivity-with-pointer-events" tabindex="-1">Adding interactivity with pointer events <a class="header-anchor" href="#adding-interactivity-with-pointer-events"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Let’s do something simple: everytime we click on the square, it changes color! This can be done using <strong>pointer events</strong> in ceramic.</p>
+<p>Add this code at the end of the <code>create()</code> method:</p>
+<div class="codename">GettingStarted.hx <span class="regular default-color">(end of <code>create()</code> method)</span></div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">        <span class="token comment">// Bind to 'pointerDown' event</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span><span class="token function">onPointerDown</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> info <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'pointer down: <span class="token interpolation"><span class="token interpolation variable">$info</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            quad<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Build and run again, you should now see your square change color everytime you click on it.</p>
+<iframe src="/static/apps/yellow-square-click" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<div class="caption">Try clicking on the square 🟨</div>
+<p>Not that hard so far right? There are still a few things to explain.</p>
+<p>With this snippet of code, we are listening to the <code>pointerDown</code> event of our <code>quad</code>. When this event is fired (that is, when we click on the quad), the callback we have provided is called.</p>
+<p>You can see we are also providing a first argument (this). That argument is the <em><strong>owner</strong></em> of the event binding. In our code, <code>this</code> is the scene instance. We are stating that the GettingStarted <code>scene</code> instance is the owner of this event binding.</p>
+<p>In practice, it means that if our scene is <em><strong>destroyed</strong></em>, the event binding will be automatically removed as well. You don’t need to remove it manually, ceramic will take care of that. If we <code>destroy()</code> the quad instance, the event binding will also be removed as the quad was the object we were listening to.</p>
+<p>Although in this example it doesn’t really matter, specifying ownership of event bindings becomes important on larger and more complex projects to ensure you won’t have anything leaking or being called accidentally on destroyed objects.</p>
+<p class="extra-info">This whole concept of ownership and events will be treated in details in a separate guide. For now, just remember that you should use <code>this</code> as first argument of your event binding and you’ll be fine!</p>
+<p>In the next guide, we'll learn how to use quads to display actual images!</p>
+
+            
+                
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="/guides/display-an-image/">Display an image</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

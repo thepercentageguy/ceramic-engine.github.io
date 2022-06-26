@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Editing your project - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Getting Started</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Appendices</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Editing your project</h1>
+<p><strong>Visual Studio Code</strong> (VSCode) is the <em><strong>official</strong></em> way of working with ceramic projects. If you don’t have it installed, <a href="https://code.visualstudio.com/">go download and install it</a>.</p>
+<p>Then, open VSCode and install the <a href="https://marketplace.visualstudio.com/items?itemName=jeremyfa.ceramic">Ceramic extension</a>:</p>
+<p>
+<img src="/static/img/install-ceramic-extension2.gif" alt="Install Ceramic extension" />
+<div class="caption">How to install the Ceramic extension from Visual Studio Code</div>
+</p>
+<p>At this point, you should be ready to work on your project.</p>
+<p>Open it from Visual Studio Code: <strong>File</strong> &gt; <strong>Open…</strong> &gt; choose <code>myproject</code> folder. It should display the following project window:</p>
+<p><img src="/static/img/ceramic-project-vscode.png" alt="Ceramic project VSCode"></p>
+<p>Code completion in Haxe files (<code>*.hx</code>) should work too.</p>
+<p class="extra-info">Read more about a default project's content ➔ <a href="/guides/inside-a-default-project">Inside a default project</a></p>
+<h2 id="run-the-project-from-vscode" tabindex="-1">Run the project from VSCode <a class="header-anchor" href="#run-the-project-from-vscode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>To run your project from Visual Studio Code, press <code>CTRL</code> + <code>Shift</code> + <code>B</code> (<code>CMD</code> + <code>Shift</code> + <code>B</code> on Mac).</p>
+<p>It should show you the same app window with ceramic logo as when you ran your project from command line.</p>
+<p class="extra-info">Ceramic comes bundled with an <a href="https://www.electronjs.org/">electron</a> runner, which is used to launch the web export of your app. It takes care of setting up an HTTP server on the fly and creates a window to display your app in a more “native” fashion. This means that when you want to test the web version of you app, you don’t need to manage an HTTP server yourself and don’t have to open some random browser tab that points to your local address. Everything is handled for you!</p>
+<h2 id="creating-your-first-scene" tabindex="-1">Creating your first Scene <a class="header-anchor" href="#creating-your-first-scene"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>At this point, you should have a Ceramic project that you can edit through VSCode, so let's create our very first scene to practise a bit!</p>
+<p>Create a new file called <code>GettingStarted.hx</code> inside the <code>src/</code> folder:</p>
+<div class="codename">GettingStarted.hx</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> GettingStarted <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Then let’s modify our <code>ready()</code> method in <code>Project.hx</code> so that it will run our new scene instead of the default one:</p>
+<div class="codename">Project.hx</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Set our new GettingStarted scene as the main scene</span></span>
+<span class="highlight-line">        app<span class="token punctuation">.</span>scenes<span class="token punctuation">.</span>main <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">GettingStarted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span></code></pre>
+<p>Let’s try to run that. It should show a black empty window, and a purple <strong>“Hello!”</strong> log should be printed inside VSCode terminal. That means our scene has been initialized and <code>create()</code> method called!</p>
+<p><img src="/static/img/empty-hello-log.png" alt="Empty Hello log"></p>
+<p>You can log different kind of messages with ceramic: <code class="code-purple">log.debug()</code>, <code class="code-yellow">log.warning()</code>, <code class="code-red">log.error()</code>, <code class="code-blue">log.info()</code> and <code class="code-green">log.success()</code>. Each kind of message will show up with a different color on the terminal.</p>
+<h3 id="your-scene-is-now-ready-to-add-more-content" tabindex="-1">Your Scene is now ready to add more content <a class="header-anchor" href="#your-scene-is-now-ready-to-add-more-content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>We managed to setup a project with a new empty scene, which is a very good starting point to add more code to display objects on screen. The next guide will show you just that!</p>
+
+            
+                
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="/guides/display-a-square/">Display a square</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

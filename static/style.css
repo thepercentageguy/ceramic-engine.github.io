@@ -1,0 +1,639 @@
+
+@import url(/static/normalize.css);
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    color-scheme: dark;
+}
+
+html body > * {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+html body a {
+    color: black;
+}
+
+#site-navigation {
+    background-color: #111;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid black;
+    height: 48px;
+}
+
+#site-navigation ul {
+    position: relative;
+    left: 0px;
+    top: 5px;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    display: block;
+    text-align: center;
+}
+
+#site-navigation ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+#site-navigation ul li a {
+    padding: 0 10px;
+    text-decoration: none;
+    color: #ddd;
+    font-weight: normal;
+}
+
+#site-navigation ul li.selected a {
+    font-weight: bold;
+    color: #eee;
+}
+
+#site-navigation ul li a .ceramic-icon {
+    max-height: 16px;
+    position: relative;
+    left: -4px;
+    top: 2px;
+}
+
+#site-navigation ul li a img.ceramic-icon {
+    max-height: 16px;
+    position: relative;
+    left: -8px;
+    top: 2px;
+}
+
+#site-navigation ul li.selected a:hover {
+    text-decoration: none;
+}
+
+#site-navigation ul li a:hover {
+    text-decoration: underline;
+    color: #eee;
+}
+#site-navigation ul li a:hover img.ceramic-icon {
+    text-decoration: none;
+}
+
+.page {
+    margin: 0;
+    padding: 0;
+}
+
+#page-home #ceramic-header {
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    padding: 80px 0 40px 0;
+}
+
+#page-home #ceramic-header .subtitle {
+    font-weight: bold;
+}
+
+#page-home #ceramic-header iframe {
+    max-width: 100%;
+}
+
+#page-home h1, #page-home h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#page-home #ceramic-header > * {
+    color: #ddd;
+    max-width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#page-home #ceramic-header > p, #page-home > main > section > p {
+    max-width: 680px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#page-home > main > section {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+#page-home > main > section#cross-platform-haxe {
+    padding-bottom: 0;
+    background-color: white;
+    color: #161616;
+}
+
+#page-home > main > section#cross-platform-haxe #diagram-ceramic {
+    background-color: #161616;
+    margin-top: 40px;
+    padding: 40px 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#page-home > main > section#cross-platform-haxe #diagram-ceramic img {
+    max-width: 960px;
+}
+
+#page-home > main > section#get-started {
+    padding: 0;
+    border-top: 1px solid #202020;
+}
+
+#page-home > main > section#get-started a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    background-color: #111;
+    color: #ddd;
+    line-height: 60px;
+}
+
+#page-home > main > section#get-started a .arrow {
+    position: relative;
+    left: 3px;
+    top: -1px;
+}
+
+#page-home > main > section#get-started a:hover {
+    color: #eee;
+    background-color: black;
+}
+
+.page-standard .page-container {
+    height: auto;
+    min-height: 100%;
+    background-color: #292929;
+}
+
+.page-standard .page-container .sidebar-left {
+    width: calc(50% - 678px / 2);
+    height: auto;
+    margin-top: 48px;
+}
+
+.page-standard .page-container .sidebar-left .sidebar {
+    margin-top: 24px;
+    margin-bottom: 6px;
+    margin-left: auto;
+    padding-right: 30px;
+    position: absolute;
+    z-index: 1;
+    right: calc(50% + 678px / 2);
+    top: 48px;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul {
+    list-style: none;
+    text-align: right;
+    padding: 0;
+    color: white;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li {
+    font-weight: bold;
+    padding-bottom: 6px;
+    color: #999;
+    font-size: 17px;
+    position: relative;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title {
+    user-select: none;
+    cursor: pointer;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title:not(.selected)::before {
+    content: '◼︎';
+    color: #999;
+    position: absolute;
+    font-weight: normal;
+    font-size: 9px;
+    right: -19px;
+    top: 6px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title:hover::before {
+    content: '▶︎';
+    color: #999;
+    position: absolute;
+    font-weight: normal;
+    font-size: 9px;
+    right: -19px;
+    top: 6px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.menu-title.selected::before {
+    content: '▶︎';
+    color: #999;
+    position: absolute;
+    font-weight: normal;
+    font-size: 9px;
+    right: -18px;
+    top: 5px;
+    user-select: none;
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li > ul {
+    display: none;
+    list-style: none;
+    text-align: right;
+    padding: 0 0 12px 0;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li.expanded > ul {
+    display: block;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li {
+    line-height: 25px;
+    position: relative;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li > a {
+    color: #eee;
+    text-decoration: none;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li.selected::after {
+    content: '•';
+    color: white;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    right: -19px;
+    top: 0px;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li.selected > a {
+    font-weight: bold;
+    color: white;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li.selected > a:hover {
+    text-decoration: none;
+}
+
+.page-standard .page-container .sidebar-left .sidebar > ul > li > ul > li > a:hover {
+    text-decoration: underline;
+}
+
+.page-standard .page-container .content-right {
+    width: calc(50% + 678px / 2);
+    height: auto;
+    color: white;
+    margin-left: -1px;
+    margin-top: 48px;
+}
+
+.page-standard .page-container .content-right main {
+    width: 610px;
+    color: #ddd;
+    background-color: #1F1F1F;
+    border: 1px solid #303030;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 34px;
+    padding-right: 34px;
+    padding-top: 10px;
+    padding-bottom: 16px;
+    line-height: 25px;
+    font-size: 16px;
+}
+
+.page-standard .page-container .content-right * {
+    max-width: 610px;
+}
+
+.page-standard .page-container .content-right main > p > video {
+    width: 100%;
+}
+
+.page-standard .page-container .content-right main > p > img:not(.float-left) {
+    width: 100%;
+}
+
+.page-standard .page-container .content-right main > p > img.float-left {
+    float: left;
+    margin-top: 6px;
+    margin-right: 30px;
+    margin-bottom: 26px;
+}
+
+.page-standard .page-container .content-right main iframe {
+    margin-bottom: 16px;
+}
+
+.page-standard .page-container .content-right main > p.extra-info {
+    padding: 12px 16px;
+    background-color: #1c3150;
+    color: rgb(200, 212, 230);
+}
+
+.page-standard .page-container .content-right main .no-margin {
+    margin-top: -16px;
+}
+
+.page-standard .page-container .content-right main .onepx-margin {
+    margin-top: -15px;
+}
+
+.page-standard .page-container .content-right main a {
+    color: #60AFEF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.page-standard .page-container .content-right main table {
+    margin-bottom: 16px;
+}
+
+.page-standard .page-container .content-right main hr {
+    clear: both;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #333;
+    margin-top: 30px;
+    margin-bottom: 26px;
+}
+
+.page-standard .page-container .content-right main .caption {
+    font-size: 13px;
+    margin-top: -24px;
+    padding: 0;
+}
+
+.page-standard .page-container .content-right main .caption a {
+    font-weight: normal;
+}
+
+.page-standard .page-container .content-right main .rectangle {
+    background-color: #161616;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-top: -22px;
+}
+
+.page-standard .page-container .content-right main .regular {
+    font-weight: normal;
+}
+
+.page-standard .page-container .content-right main .default-color {
+    color: #eee;
+}
+
+.page-standard .page-container .content-right main .codename {
+    color: #ff9900;
+    background-color: #383C43;
+    margin-bottom: -8px;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 1px 16px 2px 16px;
+}
+
+.page-standard .page-container .content-right main :not(pre.language-haxe) code {
+    color: #60AFEF;
+    font-weight: normal;
+}
+
+.page-standard .page-container .content-right main h1 {
+    line-height: 35px;
+}
+
+.page-standard .page-container .content-right main .code-purple {
+    color: #9b51e0 !important;
+}
+
+.page-standard .page-container .content-right main .code-red {
+    color: #cf2e2e !important;
+}
+
+.page-standard .page-container .content-right main .code-yellow {
+    color: #fcb900 !important;
+}
+
+.page-standard .page-container .content-right main .code-blue {
+    color: #8ed1fc !important;
+}
+
+.page-standard .page-container .content-right main .code-green {
+    color: #00d084 !important;
+}
+
+.page-standard .page-container .content-right main table,
+.page-standard .page-container .content-right main table td {
+    border: 1px solid #444;
+    border-collapse: collapse;
+    padding: 6px 8px;
+}
+
+.page-standard .page-container .content-right main a:hover {
+    text-decoration: underline;
+}
+
+.page-standard .page-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li {
+    display: block;
+    float: left;
+    margin: 2px 4px 0 0;
+    width: 196px;
+    text-align: center;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li a:hover {
+    text-decoration: none;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li .thumbnail-image {
+    display: block;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li:hover .thumbnail-image {
+    background-color: #60AFEF;
+}
+
+.page-standard .page-container .content-right main ul.thumbnail-list li .thumbnail-image img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 194px;
+    height: 145.50px;
+}
+
+.page-standard .page-container .content-right main #like-counter {
+    position: relative;
+    height: 20px;
+    border: 1px solid #444;
+    padding: 5px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    margin-left: 64px;
+}
+
+.page-standard .page-container .content-right main #like-counter.like-counter-liked {
+    cursor: default;
+}
+
+.page-standard .page-container .content-right main #like-counter::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.page-standard .page-container .content-right main #like-counter:hover,
+.page-standard .page-container .content-right main #like-counter.like-counter-liked {
+    border-color: #4a4a4a;
+    background-color: #161616;
+}
+
+.page-standard .page-container .content-right main #like-counter .like-counter-heart {
+    width: 20px;
+    height: 20px;
+    background: url(/static/love.svg) no-repeat;
+    display: inline-block;
+    filter: invert(44%) sepia(40%) saturate(3852%) hue-rotate(329deg) brightness(100%) contrast(111%);
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin-right: 4px;
+}
+
+.page-standard .page-container .content-right main #like-counter:hover .like-counter-heart,
+.page-standard .page-container .content-right main #like-counter.like-counter-liked .like-counter-heart {
+    filter: invert(44%) sepia(90%) saturate(3852%) hue-rotate(329deg) brightness(100%) contrast(111%);
+}
+
+.page-standard .page-container .content-right main #like-counter .like-counter-count {
+    font-weight: bold;
+    color: #999;
+    position: relative;
+    left: 0px;
+    top: -5px;
+}
+
+.page-standard .page-container .content-right main #like-counter:hover .like-counter-count,
+.page-standard .page-container .content-right main #like-counter.like-counter-liked .like-counter-count {
+    color: #bbb;
+}
+
+.page-standard .page-container .content-right main h1,
+.page-standard .page-container .content-right main h2,
+.page-standard .page-container .content-right main h3,
+.page-standard .page-container .content-right main h4,
+.page-standard .page-container .content-right main h5,
+.page-standard .page-container .content-right main h6 {
+    outline: none;
+}
+
+.page-standard .page-container .content-right main h1 .header-anchor,
+.page-standard .page-container .content-right main h2 .header-anchor,
+.page-standard .page-container .content-right main h3 .header-anchor,
+.page-standard .page-container .content-right main h4 .header-anchor,
+.page-standard .page-container .content-right main h5 .header-anchor,
+.page-standard .page-container .content-right main h6 .header-anchor {
+    display: none;
+    text-decoration: none;
+}
+
+.page-standard .page-container .content-right main h1:hover .header-anchor,
+.page-standard .page-container .content-right main h2:hover .header-anchor,
+.page-standard .page-container .content-right main h3:hover .header-anchor,
+.page-standard .page-container .content-right main h4:hover .header-anchor,
+.page-standard .page-container .content-right main h5:hover .header-anchor,
+.page-standard .page-container .content-right main h6:hover .header-anchor {
+    display: inline;
+}
+
+:target::before {
+    content: "";
+    display: block;
+    height: 70px;
+    margin: -70px 0 0;
+}
+
+@media (min-width: 940px) and (max-width: 1370px) {
+
+    .page-standard .page-container .sidebar-left {
+        width: calc(25%);
+    }
+
+    .page-standard .page-container .sidebar-left .sidebar {
+        right: calc(75%);
+    }
+
+    .page-standard .page-container .content-right {
+        width: calc(75%);
+    }
+
+}
+
+@media (max-width: 940px) {
+
+    body.page-standard {
+        min-width: 940px;
+    }
+
+    .page-standard .page-container .sidebar-left {
+        width: calc(25%);
+    }
+
+    .page-standard .page-container .sidebar-left .sidebar {
+        width: 100%;
+        right: calc(100% - 236px);
+    }
+
+    .page-standard .page-container .content-right {
+        width: calc(75%);
+    }
+
+}

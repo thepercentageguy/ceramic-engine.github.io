@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Auto-Tiling - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-examples" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li class="selected"><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Basics</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/examples/hello-world/">Hello World</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/quad-drag/">Dragging a quad</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/keyboard-input/">Keyboard input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/gamepad-input/">Gamepad input</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/lines/">Drawing lines</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/mesh-2d/">2D Mesh</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Samples</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/examples/spine-raptor/">Spine animations</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/spaceship-bullet/">Spaceship bullet</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/ceramic-demo/">Ceramic demo</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/examples/tilemap-pixelart/">Tilemap Pixel Art</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/examples/auto-tiling/">Auto-Tiling</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            
+                <h1>Auto-Tiling</h1>
+                <iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/auto-tiling/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+                <div class="caption rectangle">
+                <a href="https://ceramic-engine.com/ceramic-samples/auto-tiling/">Run in full page</a>
+                —
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/auto-tiling">Read full source code on GitHub</a>
+                </div>
+                
+                <hr />
+                <p class="extra-info">Click on the demo to modify the map and test how auto-tiling works.</p>
+<p class="extra-info">Check the <a href="/examples/tilemap-pixelart">previous tilemap sample</a> if you don't know how to create a tilemap from code.</p>
+<p>Another tilemap sample (using <code>tilemap</code> plugin again). This time, showcasing how to use auto-tiling and how to create a very simple in-game map editor.</p>
+<p>The <code>ceramic.AutoTiler</code> component is plugged to a tilemap layer. That auto-tiler will choose the right tile at each location depending its sibling tiles.</p>
+<p><img src="/static/img/autotile-grass-hd.png" alt="Auto Tile"></p>
+<div class="caption">A capture of the autotile image used for this demo (<a href="https://ceramic-engine.com/ceramic-samples/auto-tiling/assets/autotile-grass.png">download the original here</a>)</div>
+<br />
+<div class="codename">Enable auto-tiling</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Enable auto-tiling</span></span>
+<span class="highlight-line">layerData<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">AutoTiler</span><span class="token punctuation">(</span><span class="token punctuation">[</span></span>
+<span class="highlight-line">    EDGE_CORNER_32_EXPANDED <span class="token comment">// The kind of auto-tiling to use</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">1</span> <span class="token comment">// The corresponding "first gid" to apply auto-tiling on</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Using <code>ceramic.TilemapEditor</code> component, you can enable a very basic tilemap editor directly in game.</p>
+<div class="codename">Make the tilemap editable</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Make this tilemap editable</span></span>
+<span class="highlight-line">tilemap<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">TilemapEditor</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+
+                
+                
+                        <hr />
+                        <p>
+                            &#10132; <a href="/examples">Back to examples list</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

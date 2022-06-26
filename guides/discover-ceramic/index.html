@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Discover Ceramic - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title selected">Introduction</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li class="selected">
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Getting Started</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Appendices</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Discover Ceramic, a cross-platform and open-source 2D framework</h1>
+<p><em>The following introduction was originally published by Jérémy Faivre on his own <a href="https://jeremyfa.com/what-is-ceramic-engine/">blog</a>. This new version is now part of Ceramic website's guides section.</em></p>
+<p class="extra-info">Just want to start using <strong>Ceramic</strong>?<br />
+Follow the <strong>Getting Started</strong> guide ➔ <a href="/guides/install-ceramic">Install Ceramic</a></p>
+<h2 id="what-is-ceramic%3F" tabindex="-1">What is ceramic? <a class="header-anchor" href="#what-is-ceramic%3F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Ceramic is a cross-platform framework created by <a href="https://twitter.com/jeremyfaivre">Jérémy Faivre</a> that lets you create 2D apps and games written in the Haxe programming language.</p>
+<p>It can export natively to desktop (<code>windows</code>, <code>mac</code>, <code>linux</code>), mobile (<code>ios</code>, <code>android</code>), <code>web</code> (js + webgl) and <code>unity</code> projects.</p>
+<p><img src="/static/img/ceramic-window-1.png" alt="Ceramic window"></p>
+<p>Ceramic was under quiet development for several years. It started as some kind of personal project and then grew into something used daily to create various kind of apps and ship real games in production.</p>
+<p class="extra-info">Note: this article is a bit technical and a background in game or software development may be required to understand all of its contents.</p>
+<h2 id="so%2C-why-ceramic%3F" tabindex="-1">So, why ceramic? <a class="header-anchor" href="#so%2C-why-ceramic%3F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>It may seem odd not to use mainstream software like Unity to create video games or other graphics intensive apps. Why setting up an entire new tool?</p>
+<h3 id="wished-an-open-source-tool-between-phaser-and-unity-for-2d-apps%2Fgames" tabindex="-1">Wished an open-source tool between Phaser and Unity for 2D apps/games <a class="header-anchor" href="#wished-an-open-source-tool-between-phaser-and-unity-for-2d-apps%2Fgames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>Unity is nice, you can build a lot of things with it. But what if you come from a background where you enjoyed a lot lighter, more code-centric and 2D oriented tools on the web like <a href="https://www.pixijs.com/">Pixi</a> or <a href="https://phaser.io/">Phaser</a>?</p>
+<p>What is great with Phaser or Pixi is how simple they are to get started. You simply write a few javascript files, load them in your browser and yay, you got something working already! Unfortunately, all this joy and fun is focused to the web. It works great in web browsers, can work on mobile but to do so you need to embed a pixi or phaser app as a webview inside an iOS or Android app, and performances won’t be as good as if you created a native app.</p>
+<p>On the other hand, you could use Unity to create games and apps that can be exported to native platforms, but the steps required become more complicated and you start to depend on a huge closed source software to write ANY app or game. Everything you create has to display a Unity splash-screen unless you pay a license fee.</p>
+<p>It is totally OK to pay license fees to use Unity in the context of a professional game studio. But I personally create plenty of tiny games, apps, creative coding projects as an individual and wanted to find an alternative that doesn’t depend on something as heavy as Unity.</p>
+<p>Then, how to have a tool that can target the Web, but also natively target platforms like iOS, Android, PC, while still keeping most of the benefits of Phaser or Pixi: being open-source, easy to use and not huge like Unity?</p>
+<h3 id="meet-haxe" tabindex="-1">Meet Haxe <a class="header-anchor" href="#meet-haxe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>
+<img src="/static/img/haxe-logo-150.png" class="float-left" alt="Haxe logo" />
+The <a href="https://haxe.org">Haxe programming language</a> lets you write code that can be <em>transpiled</em> into other languages such as <code>C++</code>, <code>Javascript</code> or <code>C#</code>. Yes, that means you write a single codebase that can then be converted to <code>C++</code> or <code>JS</code> and run natively or in the browser!
+</p>
+<p>As a comparison, Unity needs to perform quite complicated transformations to make your game run in the browser: it needs to transpile your <code>C#</code> code into <code>C++</code> via IL2CPP, then transform the resulting <code>C++</code> code into WebAssembly via emscripten. The whole process is pretty slow and means you cannot iterate quickly when testing a web export of your app/game. With Haxe, transpiling your code into javascript and running it in the browser is a matter of a few seconds!</p>
+<p>Haxe is an excellent open-source programming language and it's really a joy to use it daily. It has some good features making it very powerful and scalable (macros, strictly typed, enums and pattern matching) yet is fairly easy to pick up if you already know more common languages like <code>C#</code>, <code>JS</code>, <code>Java</code>, <code>AS3</code> or <code>TypeScript</code>.</p>
+<p>Tools to create cross-platform native games already exist within the Haxe community:</p>
+<ul>
+<li>OpenFL (<a href="https://rymdkapsel.com/">Rymdkapsel</a>, <a href="https://papersplea.se/">Papers Please</a>)</li>
+<li>HaxeFlixel (<a href="http://www.defendersquest.com/">Defender Quest</a>, <a href="https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game">Friday Night Funkin’</a>)</li>
+<li>Heaps (<a href="https://store.steampowered.com/app/588650/Dead_Cells/">Dead Cells</a>, <a href="https://store.steampowered.com/app/466560/Northgard/">Northgard</a>, <a href="https://store.steampowered.com/app/1020470/Evoland_Legendary_Edition/">Evoland</a>)</li>
+<li>Kha (<a href="http://www.cross-code.com/">CrossCode</a>, <a href="https://armory3d.org/">Armory3D</a>)</li>
+<li>Luxe (<a href="https://www.coffeestainstudios.com/games/the-westport-independent/">The Wesport Independent</a>)</li>
+</ul>
+<p>I tried these one by one before starting to work on ceramic, even did some projects with some, here’s some feedback:</p>
+<table>
+    <tr>
+        <td><a href="https://www.openfl.org/">OpenFL</a></td>
+        <td>OpenFL is the most popular way to export native apps with Haxe. It’s great if you want to migrate a Flash project to Haxe because it provides the same API. That’s also the main reason it had issues for me. I don’t need to carry the whole Flash API and all the dependencies it needs (cairo, freetype…), which make it more complicated to grasp if I want to fix something inside (talking from actual experience with the tool here). It’s still a very important tool in the haxe community and a lot of developers are using it.</td>
+    </tr>
+    <tr>
+        <td><a href="https://haxeflixel.com/">HaxeFlixel</a></td>
+        <td>Same spirit as Phaser, which is nice. HaxeFlixel has pretty good documentation which is a plus. It is however built on top of OpenFL and that became an issue for me: I shipped a game at a time HaxeFlixel was stuck in some older version of OpenFL (legacy). Needed to export Android Studio projects, but that was only available in some newer OpenFL that didn’t work with HaxeFlixel. This was a very bad experience for me at the time. I managed to workaround the issue by setting up an entire alternative build system for Android and iOS. These are not good memories.</td>
+    </tr>
+    <tr>
+        <td><a href="https://heaps.io/">Heaps</a></td>
+        <td>Nice high level API and great games made with it. The tech seems solid and also provides a 3D pipeline. However, making it work on mobile was somewhat difficult and not 100% supported. It was not really an option for me as iOS and Android were the primary platforms I wanted to target at the time.</td>
+    </tr>
+    <tr>
+        <td><a href="https://kha.tech/">Kha</a></td>
+        <td>Kha is impressive. That said I didn’t dare to invest much in it, because I was not comfortable with using a tech I don’t understand much and that I can’t fix myself in case I face a problem with it. Also, if I used Kha, I would have needed to create some high level API anyway because Kha is a bit too much lower level for my daily usage. Some developers are doing awesome things with Kha though.</td>
+    </tr>
+    <tr>
+        <td><a href="https://luxeengine.com/alpha/">Luxe</a></td>
+        <td>A game framework with very few dependencies yet quite versatile. I liked it a lot and used it for a while for my projects. It was providing most of the features needed, and the internals were pretty clear and approachable, which was handy in case I needed to improve/fix something inside. Unfortunately its Haxe version got discontinued (but you can check out <a href="https://luxeengine.com/">the new luxe</a> if you want, which is now written in <code>C++</code> and using <a href="https://wren.io/">wren</a> scripting).</td>
+    </tr>
+</table>
+<p class="extra-info">Note: although I had some issues with these tools, they are great and make a lot of developers happy. I am only talking about my personal experience, which is subjective and tied to my preferences and project needs. You should definitely check these out yourself! I don’t consider ceramic as being a better tool than those. It’s just a different option with its pros and cons and ways of solving problems ✨.</p>
+<h3 id="say-hello-to-ceramic" tabindex="-1">Say hello to ceramic <a class="header-anchor" href="#say-hello-to-ceramic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<iframe src="/static/apps/ceramic-demo" width="640" height="640" loading="lazy" frameborder="0"></iframe>
+<div class="caption">A few things displayed with Ceramic</div>
+<p>I started working on <a href="https://github.com/ceramic-engine/ceramic">Ceramic</a> once Luxe (its haxe version) somehow got discontinued. Ceramic started as a wrapper around Luxe. Like, a high level API that runs on top of Luxe. I maintained a fork of Luxe for a while to ensure it worked well with ceramic and newer versions of Haxe. Then ceramic slowly evolved into something else. I created a backend system to separate the public API from its internals and to prepare for better cross-platform support.</p>
+<p>Backends are simply modules that let you port the engine to new platforms without having to rewrite the entire engine. It only contains the low level code strictly necessary to load assets, display graphics on screen, play audio, handle input…</p>
+<p>Ceramic’s first backend was using Luxe internally. It was very convenient at the time because it allowed to put very quickly the engine on foot, target mobile, desktop and webgl just fine. Performances were fairly good but not optimal because luxe was not really intended to be used this way, but it was a good transitional state and allowed to design ceramic’s high level API as I go.</p>
+<p>This transitional state lasted for a few years, until I did set up a more tailored backend called <a href="https://github.com/ceramic-engine/clay">Clay</a>. Basically, clay does the same as luxe internals, but specifically adapted to be used with ceramic, with only the features needed that don’t overlap with ceramic features.</p>
+<p>That’s how ceramic still works today.</p>
+<h3 id="ceramic-achitecture" tabindex="-1">Ceramic achitecture <a class="header-anchor" href="#ceramic-achitecture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>There are currently 3 backends: <code>Clay</code>, <code>Headless</code> and <code>Unity</code>. Clay is the default backend, Headless allows to run ceramic as a server or a CLI script and Unity backend exports your whole Ceramic project into a Unity project (this specific part about Unity will be explained in a separate guide).</p>
+<p>
+<img src="/static/img/diagram-ceramic-discover.png" alt="Ceramic architecture" />
+<div class="caption">A chart showing how ceramic is architected and what platforms you can export to.</div>
+</p>
+<p>With this separation of concerns between high level API and backends, ceramic is designed from the grounds up to be portable. New backends could be added in the future to handle new platforms, without having to change the high level API. The latest addition is the Unity backend, which is pretty new for now but already successfully runs ceramic apps like <a href="https://twitter.com/jeremyfaivre/status/1332806848060256260">my latest jam game</a>.</p>
+<p>Ceramic doesn’t provide any 3D pipeline like Heaps or Kha, it is focused on 2D and tries to do that very well. These are some of the things ceramic provides out of the box on every backend (no audio/graphics context on headless/node.js):</p>
+<ul>
+<li>
+<p><strong>Display tree</strong>: Create hierarchies of nested visual objects like you would do in Flash or Pixi.</p>
+</li>
+<li>
+<p><strong>Multi-texture batching</strong>: Fast rendering of 2D objects, even if they use different textures. This can drastically reduce the number of draw calls in your app and make it run better.</p>
+</li>
+<li>
+<p><strong>“Free” additive blending</strong>: Switching between standard and additive blending can cost you additional draw calls and destroy performances in some engines. This is not the case with ceramic, which premultiplies alpha of your images automatically and allows to draw both blendings in a single draw call (see <a href="http://amindforeverprogramming.blogspot.com/2013/07/why-alpha-premultiplied-colour-blending.html">this article</a> for reference).</p>
+</li>
+<li>
+<p><strong>Text rendering</strong>: No dependency with font rasterization libraries. Render bitmap fonts, with support of <a href="https://github.com/Chlumsky/msdfgen">MSDF</a> (multichannel signed distance field) to draw them at any resolution.</p>
+</li>
+<li>
+<p><strong>2D Quad and Mesh rendering</strong>: Draw anything composed of squares or triangles, textured or not. They can be batched together.</p>
+</li>
+<li>
+<p><strong>Audio playback API</strong>: Play sounds and background music.</p>
+</li>
+<li>
+<p><strong>Event system</strong>: Handle input and other events of your ceramic app with its built-in macro-based event system. Create your own events with very little boilerplate code.</p>
+</li>
+<li>
+<p><strong>Data model, observable and serialization API</strong>: Create haxe classes that store data and that can be incrementally serialized to disk. Bind autorunnable callbacks to observable properties like you would do with <a href="https://mobx.js.org/reactions.html#autorun">mobx autorun</a> and do reactive programming. Ceramic does that by tightly integrating with another library I wrote called <a href="https://github.com/jeremyfa/tracker">tracker</a>.</p>
+</li>
+<li>
+<p><strong>UI toolkit</strong>: Construct advanced layouts with Haxe (see <a href="https://apps.jeremyfa.com/ceramic">an example of what can be done with it here</a>).</p>
+</li>
+<li>
+<p><strong>Spritesheet, Tilemap &amp; 2D Camera</strong>: Load tilemaps created with <a href="https://www.mapeditor.org/">Tiled Map Editor</a> or from code, display animated spritesheets and use a Camera API to follow your player on the map. This will be improved in the future to support Aseprite format and some other map editors (I’m looking at you <a href="https://ldtk.io/">LDtk</a> 👀).</p>
+</li>
+<li>
+<p><strong>2D Physics</strong>: Support <a href="https://github.com/jeremyfa/arcade">Arcade Physics</a> (ported from phaser arcade physics) and <a href="https://joecreates.github.io/napephys/">Nape Physics</a>.</p>
+</li>
+<li>
+<p><strong>Spine animations</strong>: If you use <a href="http://esotericsoftware.com/">Spine</a> to create animations, ceramic can read and display these out of the box.</p>
+</li>
+<li>
+<p><strong>Entity-Component architecture</strong>: Create entities and attach components to them for better modularity of your code.</p>
+</li>
+<li>
+<p><strong>State Machine</strong>: A macro-based state machine implementation to manage states with minimum boilerplate code (a bit similar to <a href="https://github.com/prime31/StateKit">StateKit</a>).</p>
+</li>
+<li>
+<p><strong>Visual Studio Code integration</strong>: Work on your ceramic projects using the dedicated <a href="https://marketplace.visualstudio.com/items?itemName=jeremyfa.ceramic">VSCode extension</a>.</p>
+</li>
+<li>
+<p><strong>Command line tools</strong>: Ceramic comes with CLI tools to build &amp; run your project as well as exporting it for the different platforms it supports. It can for instance be used to export an Xcode project for iOS or an Android Studio project for Android.</p>
+</li>
+<li>
+<p><strong>Plugin system</strong>: Ceramic is fully extensible with plugins. You can add CLI commands, a new backend or just more high level features with a plugin.</p>
+</li>
+</ul>
+<h3 id="how-is-ceramic-used%3F" tabindex="-1">How is Ceramic used? <a class="header-anchor" href="#how-is-ceramic-used%3F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>Creating Ceramic was a way for me to experiment new things. Not only for creating games, but also create some generative art / creative coding projects (see <a href="https://jeremyfa.com/protocole-du-vivant/">this installation</a> or <a href="https://instagram.com/jeremyfa">most of my animations posted on instagram</a>, which are all made with ceramic).</p>
+<p><video autoplay loop muted playsinline src="/static/img/breaking-the-line2.mp4"></video></p>
+<div class="caption">An animation made with Ceramic.</div>
+<p>Ceramic has been used by <a href="https://lagamerie.studio/">La Gamerie</a> to release a few games with it on iOS and Android (see <a href="https://apps.apple.com/fr/app/make-more-views/id1438348967">Make More Views</a>, which contains advanced UI, a lot of animations using <a href="http://esotericsoftware.com/">Spine</a>, fully customizable studio and avatar etc… all made with Ceramic).</p>
+<h3 id="what-now%3F" tabindex="-1">What now? <a class="header-anchor" href="#what-now%3F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>I hope this article gave you a little more information about what Ceramic is and that made you want to try it! If that's the case, go to the <strong>Getting Started</strong> section to <strong>Install Ceramic</strong> from the link below 👇👇👇 .</p>
+
+            
+                
+                            <hr />
+                            <p>
+                                Continue reading &#10132; <a href="/guides/install-ceramic/">Install Ceramic</a> (Getting Started)
+                            </p>
+                            
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

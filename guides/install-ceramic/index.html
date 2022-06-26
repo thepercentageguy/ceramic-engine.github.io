@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Install Ceramic - Ceramic</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+    </head>
+    <body id="page-guides" class="page page-standard">
+        <aside id="site-navigation">
+            <ul>
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li class="selected"><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title">Introduction</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/discover-ceramic/">Discover Ceramic</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title selected">Getting Started</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li class="selected">
+                                <a href="/guides/install-ceramic/">Install Ceramic</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/editing-your-project/">Editing your project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-a-square/">Display a square</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/display-an-image/">Display an image</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/moving-visuals/">Moving visuals</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                
+                <li class="menu-title">Appendices</li>
+                <li class="">
+                    <ul>
+                        
+                            <li>
+                                <a href="/guides/inside-a-default-project/">Inside a default project</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-via-git/">Ceramic via Git</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/platform-setup/">Platform Setup</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/guides/ceramic-yml-reference/">Reference: ceramic.yml</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            <h1>Install Ceramic</h1>
+<p><img src="/static/img/ceramic-window-1.png" alt="Ceramic window"></p>
+<p>Here you are, getting for the first time your hands dirty with Ceramic!</p>
+<p class="extra-info">If you ended up here and don’t know what is <strong>Ceramic</strong>, you might want to read this introduction article first ➔ <a href="/guides/discover-ceramic">Discover Ceramic, a cross-platform and open-source 2D framework</a>.</p>
+<h2 id="install-haxe" tabindex="-1">Install Haxe <a class="header-anchor" href="#install-haxe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p><a href="https://haxe.org/download/">Download and install latest Haxe</a>.</p>
+<p>
+<img src="/static/img/download-haxe.png" alt="Haxe download page" />
+<div class="caption">Haxe download page</div>
+</p>
+<p>Simply download and run the Haxe installer and follow the instructions.</p>
+<p>The rest of the article assumes you are able to understand basic Haxe programming. If you are new to Haxe, you can take a look at the <a href="https://haxe.org/documentation/introduction/">Haxe introduction</a> and the many resources it provides from the Haxe Foundation.</p>
+<h2 id="install-ceramic" tabindex="-1">Install Ceramic <a class="header-anchor" href="#install-ceramic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>A lot of things are done on the command line with Ceramic. We will enter command line instruction with the <strong>Terminal</strong> app on mac and linux, or with <strong>Powershell</strong> on windows. You need to be familiar with command line tools to continue.</p>
+<p>The easiest way to install Ceramic is via <a href="https://lib.haxe.org/p/ceramic/">haxelib</a>. Open the terminal and type:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">haxelib <span class="token function">install</span> ceramic</span></code></pre>
+<p>This should have installed a setup utility on your machine. You can now enter a second command to download the actual ceramic package and install it:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">haxelib run ceramic setup</span></code></pre>
+<p>Follow the instructions, it will tell you where it wants to install Ceramic and do it (default behaviour is to create a ceramic folder in the current working directory where you are running your terminal. <a href="https://lib.haxe.org/p/ceramic/">You can check more advanced install options on the haxelib page</a>).</p>
+<p class="extra-info">When it asks you if you want to make <code>ceramic</code> command available globally, you should choose <code>yes</code> so that the <code>ceramic</code> command will work by default on any command line session from any folder on your computer.</p>
+<p class="extra-info">On Mac and Linux, depending on the permissions settings of your machine, you might need to run the setup with administrator rights: <code>sudo haxelib run ceramic setup</code>.</p>
+<p>After the command has finished installing, you can check that Ceramic is working by typing:</p>
+<pre class="language-bash"><code class="language-bash"><span class="highlight-line">ceramic</span></code></pre>
+<p><em>If you didn’t install ceramic globally, you can run it with <strong>haxelib run ceramic</strong> instead.</em></p>
+<p>If you get a similar display as below, that means ceramic has been successfully installed 🎉.</p>
+<p><img src="/static/img/ceramic-cli.png" alt="Ceramic CLI"></p>
+<p class="extra-info">Installing Haxe (and haxelib) on your computer was required to follow this guide as we install Ceramic via haxelib, but note that Ceramic is mostly self-contained. It embeds its own versions of haxe, node & electron so that it won’t break if you update something on your computer. Projects generated by Ceramic contain their own local haxelib repository and are configured to use Ceramic’s embedded haxe for code completion and compilation.<p>
+<p class="extra-info">Another note to Haxe developers using <a href="https://github.com/lix-pm/lix.client">lix</a>: Ceramic is not designed to work with lix. Creating a lix scope inside a Ceramic project is not supported. That said, a standard Ceramic project should work and compile fine even if your global haxe installation is running via lix, thanks to Ceramic being packed with everything it needs already.<p>
+            
+                
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="/guides/your-first-project/">Your first Ceramic project</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>
