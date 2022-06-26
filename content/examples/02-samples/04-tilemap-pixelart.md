@@ -7,7 +7,7 @@ permalink: examples/tilemap-pixelart/
 sample: tilemap-pixelart
 ---
 
-A minimap sample showing how to construct a tilemap (with `tilemap` plugin) and displaying it with a pixel art filter.
+A minimal sample showing how to construct a tilemap (with `tilemap` plugin) and displaying it with a pixel art filter.
 
 <div class="codename">Create and display a tilemap from code</div>
 
