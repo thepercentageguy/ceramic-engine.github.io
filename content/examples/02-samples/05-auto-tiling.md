@@ -25,7 +25,7 @@ The `ceramic.AutoTiler` component is plugged to a tilemap layer. That auto-tiler
 ```haxe
 // Enable auto-tiling
 layerData.component(new AutoTiler([
-    EDGE_CORNER_32_EXPANDED // The kind of auto-tiling to use
+    EXPANDED_48 // The kind of auto-tiling to use
 ], [
     1 // The corresponding "first gid" to apply auto-tiling on
 ]));
