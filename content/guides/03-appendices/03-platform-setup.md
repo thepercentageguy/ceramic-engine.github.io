@@ -41,7 +41,7 @@ You should then be able to build a native Windows app when you select `Build/Run
 <p class="extra-info">Building for Android can be done from Mac, Linux and Windows<p>
 
 * Install [Android Studio](https://developer.android.com/studio)
-* Install [Android NDK r15c](https://developer.android.com/ndk/downloads/older_releases.html) or more recent [NDK r21e](https://github.com/android/ndk/wiki/Unsupported-Downloads#r21e).
+* Install [NDK r21e](https://github.com/android/ndk/wiki/Unsupported-Downloads#r21e) (other versions are not guaranteed to work so you should use this one).
 
 HXCPP needs to know where your Android SDK and Android NDK are installed. To solve that, you need to add some info inside your `.hxcpp-config.xml` (that should be located inside your home directory. If not, you can create it).
 
@@ -59,8 +59,7 @@ HXCPP needs to know where your Android SDK and Android NDK are installed. To sol
 </xml>
 ```
 
-Also note that if you are using Android NDK `r15c`, you'll need to add `ceramic_android_use_gcc` define to `ceramic.yml`.
-If you are on macOS Catalina or above, you may also need to disable Gatekeeper to make that NDK work:
+If you are on macOS Catalina or above, you may need to disable Gatekeeper to make the NDK binaries work:
 
 ```bash
 sudo spctl --master-disable
